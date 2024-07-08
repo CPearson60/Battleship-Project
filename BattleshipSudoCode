@@ -1,1 +1,40 @@
+5x5 grid
+Battlegrid = [
 
+ [1,2,3,4,5],
+ [1,2,3,4,5],
+ [1,2,3,4,5],
+ [1,2,3,4,5],
+ [1,2,3,4,5],
+
+def random cord generator():
+ # Something
+
+# user input prompt to match coord in the grid list
+
+battlegrid seperate list =
+# This Grid Is For Cords
+ [A1, B1, C1, D1, E1],
+ [A1, B1, C1, D1, E1],
+ [A1, B1, C1, D1, E1],
+ [A1, B1, C1, D1, E1],
+ [A1, B1, C1, D1, E1],
+
+  1  2  3  4  5
+A
+B
+C
+D
+E
+
+1. Computer Generates Random Point Battlegrid[Randompoint][Randompoint]
+    randompoint = random.randint(1,4)
+2. The Player Should Input A Cord Row(Letter), Col(Num)
+3. Traverse Mock List To See If input Matches
+4. If input matches a specific index in the mock list, recognize the index numnber and replace the same index number of the original list with a stored hit.
+5. Verify If Hit Was Ship or Not
+6. If Hit == True Show Player Won and Show Cord Ship Was On
+7. If Ship Is Not hit repeat process until ship is hit
+
+#Create method to say player cant hit same cord twice
+#Edge Cases
