@@ -5,11 +5,11 @@ def battleGrid():
     
     # 5x5 grid
     displayGrid = [
-    [" "," "," "," "," "],
-    [" "," "," "," "," "],
-    [" "," "," "," "," "],
-    [" "," "," "," "," "],
-    [" "," "," "," "," "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
     
     ]
 
@@ -25,13 +25,13 @@ def battleGrid():
     # prints the grid
     print(Fore.LIGHTCYAN_EX + f"\n{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
     print("----+-----+-----+-----+----")
-    print(Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3] | {displayGrid[1][4]}}")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
     print("----+-----+-----+-----+----")
-    print(Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3] | {displayGrid[2][4]}}")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
     print("----+-----+-----+-----+----")
-    print(Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3] | {displayGrid[3][4]}}")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
     print("----+-----+-----+-----+----")
-    print(Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3] | {displayGrid[4][4]}}\n")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
     print(Style.RESET_ALL)
 
 battleGrid()
