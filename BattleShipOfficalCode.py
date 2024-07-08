@@ -39,16 +39,23 @@ def gridUpdate(coordGrid, displayGrid):
     ]
 
 
-    place = input("Where do you want to place the tile on the grid? (X,#) ")
-    place = place.replace(" ", "")
-    place = place.replace(",","")
-    while place not in coordGrid:
-        place = input("Invalid input. Please enter a valid spot on the grid in the correct format. (Letters must be uppercase.): ")
-        place = place.replace(" ", "")
-        place = place.replace(",","")
-    moveIndex = coordGrid.index(place)
-    coordGrid[moveIndex] = f" Hit/Miss Display Symbol "
-    displayGrid[moveIndex] = "1/0 (Hit/Miss Integer)"
+def player_shoot():
+    
+    shot = input("Where do you want to shoot? [column][row]: ").strip()
+    valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
+    while not valid:
+        shot = input("Wrong format, input [column],[row]: ").strip()
+        valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
+    row_convert = {"a":0, "b":1, "c":2, "d":3, "e":4}
+    row = row_convert[shot[0].lower()]
+
+    col = int(shot[1]) - 1
+    
+    displayGrid[row][col] = "x"
+    
+    return (displayGrid)
+
+
 
 # 5x5 grid
 coordGrid = [
@@ -71,3 +78,5 @@ displayGrid = [
 
 battleGrid(displayGrid)
 gridUpdate(coordGrid, displayGrid)
+player_shoot()
+battleGrid(displayGrid)
