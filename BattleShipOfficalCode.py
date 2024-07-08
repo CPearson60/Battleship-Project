@@ -55,7 +55,8 @@ def player_shoot():
     
     return (displayGrid)
 
-
+def check_win():
+    if 
 
 # 5x5 grid
 coordGrid = [
@@ -75,8 +76,8 @@ displayGrid = [
 
 ]
 
-while True:
+win = False
+while win != True:
     battleGrid(displayGrid)
     gridUpdate(coordGrid, displayGrid)
     player_shoot()
-    
