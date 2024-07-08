@@ -42,25 +42,17 @@ def gridUpdate(coordGrid, displayGrid):
 
 def player_shoot():
     
-<<<<<<< Updated upstream
-    shot = input("Where do you want to shoot? (X,#): ").strip()
-    shot = shot.replace(",","")
-    valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
-    while not valid:
-        shot = input("Invalid input. Please enter a valid coordinate (X,#): ").strip()
-=======
     shot = input("Where do you want to shoot? [row][column]: ").strip()
     valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     while not valid:
         shot = input("Wrong format, input [row][column]: ").strip()
->>>>>>> Stashed changes
         valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     row_convert = {"a":0, "b":1, "c":2, "d":3, "e":4}
     row = row_convert[shot[0].lower()]
 
     col = int(shot[1]) - 1
     
-    displayGrid[row][col] = " x "
+    displayGrid[row][col] = " X "
     
     return (displayGrid)
 
@@ -93,17 +85,17 @@ def random_num():
 def ship_point(ship_point_grid):
     
     ship_point_grid[random_num][random_num] = 1
-<<<<<<< Updated upstream
+
     #print(ship_point_grid)
-=======
+
     print(ship_point_grid)
 
-def win_check(display_grid):
+def win_check(computer_row,computer_col,display_grid):
     if display_grid[computer_row][computer_col] == "X":
         return True
     else:
         return False
->>>>>>> Stashed changes
+
     
 print("Welcome to Battleship!") 
 random_num=random_num()
@@ -118,7 +110,7 @@ print (computer_row, computer_col)
 while win != True:
     battleGrid(displayGrid)
     gridUpdate(coordGrid, displayGrid)
-    win = win_check(displayGrid)
+    win = win_check(computer_col,computer_row,displayGrid)
     if win == True:
         print("You Hit Ship")
         break
