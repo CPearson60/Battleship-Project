@@ -4,16 +4,15 @@ from colorama import init, Fore, Style
 def battleGrid(displayGrid):
     
     # prints the grid
-    print("\n   1     2     3     4     5")
-    print("A " + Fore.LIGHTCYAN_EX + f"{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
-    print("  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "B " + Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
-    print("  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "C " + Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
-    print("  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "D " + Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
-    print("  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "E " + Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
+    print(Fore.LIGHTCYAN_EX + f"\n{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
+    print("----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
+    print("----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
+    print("----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
+    print("----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
     print(Style.RESET_ALL)
 
     return coordGrid, displayGrid
@@ -42,18 +41,10 @@ def gridUpdate(coordGrid, displayGrid):
 
 def player_shoot():
     
-<<<<<<< Updated upstream
-    shot = input("Where do you want to shoot? (X,#): ").strip()
-    shot = shot.replace(",","")
-    valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
-    while not valid:
-        shot = input("Invalid input. Please enter a valid coordinate (X,#): ").strip()
-=======
     shot = input("Where do you want to shoot? [row][column]: ").strip()
     valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     while not valid:
         shot = input("Wrong format, input [row][column]: ").strip()
->>>>>>> Stashed changes
         valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     row_convert = {"a":0, "b":1, "c":2, "d":3, "e":4}
     row = row_convert[shot[0].lower()]
@@ -93,9 +84,6 @@ def random_num():
 def ship_point(ship_point_grid):
     
     ship_point_grid[random_num][random_num] = 1
-<<<<<<< Updated upstream
-    #print(ship_point_grid)
-=======
     print(ship_point_grid)
 
 def win_check(display_grid):
@@ -103,9 +91,7 @@ def win_check(display_grid):
         return True
     else:
         return False
->>>>>>> Stashed changes
     
-print("Welcome to Battleship!") 
 random_num=random_num()
 
 ship_point(coordGrid)
