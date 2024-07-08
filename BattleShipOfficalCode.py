@@ -1,27 +1,8 @@
 import random
 from colorama import init, Fore, Style
 
-def battleGrid():
+def battleGrid(displayGrid):
     
-    # 5x5 grid
-    displayGrid = [
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    
-    ]
-
-    # battleGrid seperate list (stores coords and mimics displayGrid)
-    coordGrid = [
-    ["A1", "A2", "A3", "A4", "A5"],
-    ["B1", "B2", "B3", "B4", "B5"],
-    ["C1", "C2", "C3", "C4", "C5"],
-    ["D1", "D2", "D3", "D4", "D5"],
-    ["E1", "E2", "E3", "E4", "E5"],
-    ]
-
     # prints the grid
     print(Fore.LIGHTCYAN_EX + f"\n{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
     print("----+-----+-----+-----+----")
@@ -34,4 +15,59 @@ def battleGrid():
     print(Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
     print(Style.RESET_ALL)
 
-battleGrid()
+    return coordGrid, displayGrid
+
+
+def gridUpdate(coordGrid, displayGrid):
+
+    # 5x5 grid
+    coordGrid = [
+    ["A1", "A2", "A3", "A4", "A5"],
+    ["B1", "B2", "B3", "B4", "B5"],
+    ["C1", "C2", "C3", "C4", "C5"],
+    ["D1", "D2", "D3", "D4", "D5"],
+    ["E1", "E2", "E3", "E4", "E5"],
+    ]
+    # battleGrid seperate list (stores coords and mimics displayGrid)
+    displayGrid = [
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+    ["   ","   ","   ","   ","   "],
+
+    ]
+
+
+    place = input("Where do you want to place the tile on the grid? (X,#) ")
+    place = place.replace(" ", "")
+    place = place.replace(",","")
+    while place not in coordGrid:
+        place = input("Invalid input. Please enter a valid spot on the grid in the correct format. (Letters must be uppercase.): ")
+        place = place.replace(" ", "")
+        place = place.replace(",","")
+    moveIndex = coordGrid.index(place)
+    coordGrid[moveIndex] = f" Hit/Miss Display Symbol "
+    displayGrid[moveIndex] = "1/0 (Hit/Miss Integer)"
+
+# 5x5 grid
+coordGrid = [
+["A1", "A2", "A3", "A4", "A5"],
+["B1", "B2", "B3", "B4", "B5"],
+["C1", "C2", "C3", "C4", "C5"],
+["D1", "D2", "D3", "D4", "D5"],
+["E1", "E2", "E3", "E4", "E5"],
+]
+# battleGrid seperate list (stores coords and mimics displayGrid)
+displayGrid = [
+["   ","   ","   ","   ","   "],
+["   ","   ","   ","   ","   "],
+["   ","   ","   ","   ","   "],
+["   ","   ","   ","   ","   "],
+["   ","   ","   ","   ","   "],
+
+]
+
+
+battleGrid(displayGrid)
+gridUpdate(coordGrid, displayGrid)
