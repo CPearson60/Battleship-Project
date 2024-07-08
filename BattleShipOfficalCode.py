@@ -6,13 +6,13 @@ def battleGrid(displayGrid):
     # prints the grid
     print("\n   1     2     3     4     5")
     print("A " + Fore.LIGHTCYAN_EX + f"{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
-    print("  ----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
     print(Style.RESET_ALL + "B " + Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
-    print("  ----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
     print(Style.RESET_ALL + "C " + Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
-    print("  ----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
     print(Style.RESET_ALL + "D " + Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
-    print("  ----+-----+-----+-----+----")
+    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
     print(Style.RESET_ALL + "E " + Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
     print(Style.RESET_ALL)
 
@@ -42,17 +42,21 @@ def gridUpdate(coordGrid, displayGrid):
 
 def player_shoot():
     
-    shot = input("Where do you want to shoot? [row][column]: ").strip()
+    shot = input("Where do you want to shoot? (X,#): ").strip()
+    shot = shot.replace(",","")
     valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     while not valid:
-        shot = input("Wrong format, input [row][column]: ").strip()
+        shot = input("Invalid input. Please enter a valid coordinate (X,#): ").strip()
+        shot = shot.replace(",","")
         valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
     row_convert = {"a":0, "b":1, "c":2, "d":3, "e":4}
     row = row_convert[shot[0].lower()]
 
     col = int(shot[1]) - 1
     
-    displayGrid[row][col] = " X "
+    X = "X"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
+
     
     return (displayGrid)
 
@@ -86,8 +90,6 @@ def ship_point(ship_point_grid):
     
     ship_point_grid[random_num][random_num] = 1
 
-    #print(ship_point_grid)
-
     print(ship_point_grid)
 
 def win_check(computer_row,computer_col,display_grid):
@@ -95,7 +97,6 @@ def win_check(computer_row,computer_col,display_grid):
         return True
     else:
         return False
-
     
 print("Welcome to Battleship!") 
 random_num=random_num()
@@ -105,16 +106,15 @@ ship_point(coordGrid)
 win = False
 computer_row = random.randint(0,4)
 computer_col = random.randint(0,4)
-print (computer_row, computer_col)
+# print (computer_row, computer_col)
 
-while win != True:
+while win_check(computer_col,computer_row,displayGrid)!= True:
     battleGrid(displayGrid)
     gridUpdate(coordGrid, displayGrid)
-    win = win_check(computer_col,computer_row,displayGrid)
+   
+    player_shoot()
     if win == True:
         print("You Hit Ship")
         break
     
-    player_shoot()
-    
-
+print("You Hit Ship")
