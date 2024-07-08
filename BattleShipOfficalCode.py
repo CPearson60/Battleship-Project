@@ -76,6 +76,19 @@ displayGrid = [
 
 ]
 
+def random_num():
+    return random.randint(0,4)
+   
+
+def ship_point(ship_point_grid):
+    
+    ship_point_grid[random_num][random_num] = 1
+    print(ship_point_grid)
+    
+random_num=random_num()
+
+ship_point(coordGrid)
+
 win = False
 while win != True:
     battleGrid(displayGrid)
