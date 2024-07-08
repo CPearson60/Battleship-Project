@@ -75,8 +75,8 @@ displayGrid = [
 
 ]
 
-
-battleGrid(displayGrid)
-gridUpdate(coordGrid, displayGrid)
-player_shoot()
-battleGrid(displayGrid)
+while True:
+    battleGrid(displayGrid)
+    gridUpdate(coordGrid, displayGrid)
+    player_shoot()
+    
