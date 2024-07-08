@@ -51,12 +51,12 @@ def player_shoot():
 
     col = int(shot[1]) - 1
     
-    displayGrid[row][col] = "x"
+    displayGrid[row][col] = " x "
     
     return (displayGrid)
 
-def check_win():
-    if 
+# def check_win():
+#     if 
 
 # 5x5 grid
 coordGrid = [
