@@ -38,3 +38,27 @@ E
 
 #Create method to say player cant hit same cord twice
 #Edge Cases
+
+
+computer row = random.randint
+computer col = random.randint
+
+computer_list = [
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,0,0,0,0],
+    [0,0,0,0,0]
+    ]
+
+computer[computer row][computer col] = X
+
+def win_condition():
+  if display grid[ computer row][computer col] == x 
+    return True
+    
+win = win_condition
+
+if win == True 
+  print("player won")
+  
