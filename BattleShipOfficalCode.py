@@ -40,15 +40,15 @@ def battleGrid(displayGrid):
     return coordGrid, displayGrid
 
 
+
 def player_shoot():
-    
     shot = input("Where do you want to shoot? (X,#): ").strip()
     shot = shot.replace(",","")
-    valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
+    valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"] 
     while not valid:
         shot = input("Invalid input. Please enter a valid coordinate (X,#): ").strip()
         shot = shot.replace(",","")
-        valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"]
+        valid = len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d","e"] and shot[1] in ["1", "2", "3", "4", "5"] 
     row_convert = {"a":0, "b":1, "c":2, "d":3, "e":4}
     row = row_convert[shot[0].lower()]
 
@@ -57,8 +57,8 @@ def player_shoot():
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
     coordGrid[row][col] = X
-
     
+
     return (displayGrid,coordGrid, X)
 
     
