@@ -40,6 +40,36 @@ while True:
             random_num4 = random.randint(0,4)
     break
 
+from colorama import init, Fore
+
+def board(col_list, row_list):
+    # Create the grid with empty spaces
+    # displayGrid = 
+    displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+
+    # Print the top border
+
+
+    # Print letters for columns header
+    print("", Fore.LIGHTCYAN_EX + "|"," ", end="")
+    for col in range(col_list):
+        if col + 1 == 1:
+            print(f"{col+1}",end="  |")
+        else:
+            if col < 9:
+                print(f"  {col+1}",end="  |")
+            else:
+                print(f" {col+1}",end="  |")
+    print("")
+
+    # Print grid rows
+    for i in range(row_list):
+        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...) #Chr 6
+        for j in range(col_list):
+            print(displayGrid[i][j], end="   | ")  # Print grid content
+        print()
+
+
 
 
 def battleGrid(displayGrid):
@@ -62,18 +92,7 @@ def battleGrid(displayGrid):
 
 def shipPlaceGrid(shipPlaceDisplayGrid):
     
-    # prints the grid
-    print("\n   1     2     3     4     5")
-    print("A " + Fore.LIGHTCYAN_EX + f"{shipPlaceDisplayGrid[0][0]} | {shipPlaceDisplayGrid[0][1]} | {shipPlaceDisplayGrid[0][2]} | {shipPlaceDisplayGrid[0][3]} | {shipPlaceDisplayGrid[0][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "B " + Fore.LIGHTCYAN_EX + f"{shipPlaceDisplayGrid[1][0]} | {shipPlaceDisplayGrid[1][1]} | {shipPlaceDisplayGrid[1][2]} | {shipPlaceDisplayGrid[1][3]} | {shipPlaceDisplayGrid[1][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "C " + Fore.LIGHTCYAN_EX + f"{shipPlaceDisplayGrid[2][0]} | {shipPlaceDisplayGrid[2][1]} | {shipPlaceDisplayGrid[2][2]} | {shipPlaceDisplayGrid[2][3]} | {shipPlaceDisplayGrid[2][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "D " + Fore.LIGHTCYAN_EX + f"{shipPlaceDisplayGrid[3][0]} | {shipPlaceDisplayGrid[3][1]} | {shipPlaceDisplayGrid[3][2]} | {shipPlaceDisplayGrid[3][3]} | {shipPlaceDisplayGrid[3][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "E " + Fore.LIGHTCYAN_EX + f"{shipPlaceDisplayGrid[4][0]} | {shipPlaceDisplayGrid[4][1]} | {shipPlaceDisplayGrid[4][2]} | {shipPlaceDisplayGrid[4][3]} | {shipPlaceDisplayGrid[4][4]}\n")
-    print(Style.RESET_ALL)
+    board(col_list,row_list)
 
     return coordGrid, shipPlaceDisplayGrid
 
@@ -125,7 +144,7 @@ def manual_ship_place():
     # ship 4
 
     # display initial grid
-    shipPlaceGrid(shipPlaceDisplayGrid)
+    shipPlaceGrid(displayGrid)
 
     # input for ship 3 
     ship3 = input("Please enter the coord for your first ship (X,#): ").strip().replace(",", "")
@@ -136,9 +155,9 @@ def manual_ship_place():
     col1 = int(ship3[1]) - 1
 
     # mark shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX} O {Fore.LIGHTCYAN_EX}"
+    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX} O {Fore.LIGHTCYAN_EX}"
     # display updated grid
-    shipPlaceGrid(shipPlaceDisplayGrid)
+    shipPlaceGrid(displayGrid)
 
     # input for ship 4
     ship4 = input("Please enter the coord for your second ship (X,#): ").strip().replace(",", "")
@@ -195,6 +214,17 @@ Enter 0 or 1: """).strip()
             print("Invalid input. Please enter either 0 or 1.")
 
 
-    
+# Get number of columns and rows from user
+col_list = int(input("How many columns: "))
+if col_list >= 27:
+    while col_list>= 27:
+        col_list = int(input("Too many Maximum Col Is 26 How many columns: "))
+
+row_list = int(input("How many rows: "))
+if row_list >= 27:
+    while row_list>= 27:
+        row_list = int(input("Too many Maximum Row Is 26 How many columns: "))
+
+board(col_list,row_list)
 print("Welcome to Battleship!") 
 ship_place_method()
