@@ -37,4 +37,4 @@ def board():
             print(displayGrid[i][j], end="   | ")  # Print grid content
         print()
 
-
+board()
