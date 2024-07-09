@@ -33,7 +33,7 @@ def player_shoot():
 
     col = int(shot[1]) - 1
     
-    X = "x"
+    X = "X"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
     coordGrid[row][col] = X
 
