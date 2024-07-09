@@ -56,9 +56,10 @@ def player_shoot():
     
     X = "X"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
+    coordGrid[row][col] = X
 
     
-    return (displayGrid)
+    return (displayGrid, X)
 
 # def check_win():
 #     if 
@@ -81,40 +82,16 @@ displayGrid = [
 
 ]
 
-
-def random_num():
-    return random.randint(0,4)
-   
-
-def ship_point(ship_point_grid):
-    
-    ship_point_grid[random_num][random_num] = 1
-
-    print(ship_point_grid)
-
-def win_check(computer_row,computer_col,display_grid):
-    if display_grid[computer_row][computer_col] == "X":
-        return True
-    else:
-        return False
     
 print("Welcome to Battleship!") 
-random_num=random_num()
 
-ship_point(coordGrid)
-
-win = False
-computer_row = random.randint(0,4)
-computer_col = random.randint(0,4)
-# print (computer_row, computer_col)
-
-while win_check(computer_col,computer_row,displayGrid)!= True:
+while True: 
     battleGrid(displayGrid)
-    gridUpdate(coordGrid, displayGrid)
-   
     player_shoot()
-    if win == True:
-        print("You Hit Ship")
+    gridUpdate(coordGrid, displayGrid)
+    random_num = random.randint(0,4)
+    ship = coordGrid[random_num][random_num]
+    if ship == "x":
+        print("You hit the ship!")
         break
-    
-print("You Hit Ship")
+
