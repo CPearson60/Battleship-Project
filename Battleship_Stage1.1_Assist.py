@@ -260,12 +260,12 @@ def computer_ship_place():
         player_shoot()
         os.system('cls' if os.name == 'nt' else 'clear')
 
-        if (random_num1, random_num2) == (row, col):
+        if (random_num1, random_num2) == (random_num1, random_num2):
             print("You hit a ship!")
-        elif (random_num3, random_num4) == (row, col):
+        elif (random_num3, random_num4) == (random_num1, random_num2):
             print("You hit a ship!")
 
-        if (random_num1, random_num2) == (row, col) and (random_num3, random_num4) == (row, col):
+        if (random_num1, random_num2) == (random_num1, random_num2) and (random_num3, random_num4) == (random_num3, random_num4):
             print("Both ships have been sunk. You win!")
             break
 
@@ -337,13 +337,13 @@ def manual_ship_place():
         player_shoot()
 
         # Check if player hits ship 1 or ship 2
-        if (row1, col1) == (row, col):
+        if (row1, col1) == (row1, col1):
             print("You hit a ship!")
-        elif (row2, col2) == (row, col):
+        elif (row2, col2) == (row1, col1):
             print("You hit a ship!")
 
         # Check if both ships have been sunk
-        if (row1, col1) == (row, col) and (row2, col2) == (row, col):
+        if (row1, col1) == (row1, col1) and (row2, col2) == (row2, col2):
             print("Both ships have been sunk. You win!")
             break
 
