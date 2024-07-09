@@ -91,6 +91,7 @@ while True:
     gridUpdate(coordGrid, displayGrid)
     random_num = random.randint(0,4)
     ship = coordGrid[random_num][random_num]
+    print (random_num)
     if ship == "x":
         print("You hit the ship!")
         break
