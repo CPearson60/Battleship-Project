@@ -19,27 +19,6 @@ def battleGrid(displayGrid):
     return coordGrid, displayGrid
 
 
-def gridUpdate(coordGrid, displayGrid):
-
-    # 5x5 grid
-    coordGrid = [
-    ["A1", "A2", "A3", "A4", "A5"],
-    ["B1", "B2", "B3", "B4", "B5"],
-    ["C1", "C2", "C3", "C4", "C5"],
-    ["D1", "D2", "D3", "D4", "D5"],
-    ["E1", "E2", "E3", "E4", "E5"],
-    ]
-    # battleGrid seperate list (stores coords and mimics displayGrid)
-    displayGrid = [
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-    ["   ","   ","   ","   ","   "],
-
-    ]
-
-
 def player_shoot():
     
     shot = input("Where do you want to shoot? (X,#): ").strip()
@@ -59,10 +38,7 @@ def player_shoot():
     coordGrid[row][col] = X
 
     
-    return (displayGrid, X)
-
-# def check_win():
-#     if 
+    return (displayGrid,coordGrid, X)
 
 # 5x5 grid
 coordGrid = [
@@ -81,18 +57,30 @@ displayGrid = [
 ["   ","   ","   ","   ","   "],
 
 ]
-
     
-print("Welcome to Battleship!") 
+# print("Welcome to Battleship!") 
+# random_num1 = random.randint(0,4)
+# random_num2 = random.randint(0,4)
+# ship = coordGrid[random_num1][random_num2]
+# print (random_num1,random_num2)
+# while True: 
+#     battleGrid(displayGrid)
+#     player_shoot()
+#     if ship == "x":
+#         print("You hit the ship!")
+#         break
 
-while True: 
-    battleGrid(displayGrid)
-    player_shoot()
-    gridUpdate(coordGrid, displayGrid)
-    random_num = random.randint(0,4)
-    ship = coordGrid[random_num][random_num]
-    print (random_num)
-    if ship == "x":
-        print("You hit the ship!")
-        break
 
+random_num1 = random.randint(0,4)
+random_num2 = random.randint(0,4)
+print(random_num1,random_num2)
+win=False
+while win == False:
+    if displayGrid[random_num1][random_num2] == "X":
+        print("won")
+    else:
+        battleGrid(displayGrid)
+        player_shoot()
+        if displayGrid[random_num1][random_num2] == "X":
+            win=True
+            print(win)
