@@ -39,7 +39,7 @@ def player_shoot():
     col = int(shot[1]) - 1
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
     coordGrid[row][col] = X
 
     return (displayGrid, coordGrid, X)
@@ -116,7 +116,7 @@ def manual_ship_place():
     col1 = int(ship1[1:]) - 1
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX} O {Fore.LIGHTCYAN_EX}"
+    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
     shipPlaceGrid(shipPlaceDisplayGrid)
 
     # Input for ship 2
