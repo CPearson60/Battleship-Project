@@ -10,7 +10,6 @@ coordGrid = [
 ["D1", "D2", "D3", "D4", "D5"],
 ["E1", "E2", "E3", "E4", "E5"]
 ]
-
 # battleGrid seperate list (stores coords and mimics displayGrid)
 displayGrid = [
 ["   ","   ","   ","   ","   "],
