@@ -13,6 +13,7 @@ def board():
             row_list = int(input("Too many Maximum Row Is 26 How many columns: "))
 
     # Create the grid with empty spaces
+    # displayGrid = 
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
     # Print the top border
@@ -37,4 +38,4 @@ def board():
             print(displayGrid[i][j], end="   | ")  # Print grid content
         print()
 
-
+board()
