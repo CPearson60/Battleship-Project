@@ -33,7 +33,7 @@ def player_shoot():
 
     col = int(shot[1]) - 1
     
-    X = "X"
+    X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
     coordGrid[row][col] = X
 
@@ -46,7 +46,7 @@ coordGrid = [
 ["B1", "B2", "B3", "B4", "B5"],
 ["C1", "C2", "C3", "C4", "C5"],
 ["D1", "D2", "D3", "D4", "D5"],
-["E1", "E2", "E3", "E4", "E5"],
+["E1", "E2", "E3", "E4", "E5"]
 ]
 # battleGrid seperate list (stores coords and mimics displayGrid)
 displayGrid = [
@@ -54,18 +54,20 @@ displayGrid = [
 ["   ","   ","   ","   ","   "],
 ["   ","   ","   ","   ","   "],
 ["   ","   ","   ","   ","   "],
-["   ","   ","   ","   ","   "],
+["   ","   ","   ","   ","   "]
 
 ]
     
 print("Welcome to Battleship!") 
-random_num = random.randint(0,4)
-ship = coordGrid[random_num][random_num]
-print (random_num)
+random_num1 = random.randint(0,4)
+random_num2 = random.randint(0,4)
+
+
 while True: 
     battleGrid(displayGrid)
     player_shoot()
-    print (random_num)
+    print (random_num1 , random_num2)
+    ship = coordGrid[random_num1][random_num2]
     if ship == "x":
         print("You hit the ship!")
         break
