@@ -68,7 +68,7 @@ def computer_ship_place():
         if coordGrid[random_num1][random_num2] == "x":
             print("You hit ship 1!")
             ship1_sunk = True  # Mark ship 1 as sunk
-        elif coordGrid[random_num3][random_num4] == "x":
+        if coordGrid[random_num3][random_num4] == "x":
             print("You hit ship 2!")
             ship2_sunk = True  # Mark ship 2 as sunk
 
@@ -76,7 +76,6 @@ def computer_ship_place():
         if ship1_sunk and ship2_sunk:
             print("Both ships have been sunk. You win!")
             break
-
 
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid):
@@ -153,7 +152,7 @@ def manual_ship_place():
         if coordGrid[row1][col1] == "x":
             print("You hit ship 1!")
             ship1_sunk = True  # Mark ship 1 as sunk
-        elif coordGrid[row2][col2] == "x":
+        if coordGrid[row2][col2] == "x":
             print("You hit ship 2!")
             ship2_sunk = True  # Mark ship 2 as sunk
 
@@ -161,9 +160,6 @@ def manual_ship_place():
         if ship1_sunk and ship2_sunk:
             print("Both ships have been sunk. You win!")
             break
-
-
-
 
 # Function to choose ship placement method
 def ship_place_method():
