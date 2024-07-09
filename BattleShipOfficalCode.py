@@ -1,4 +1,5 @@
 import random
+import os
 from colorama import init, Fore, Style
 
 # 5x5 grid
@@ -68,6 +69,7 @@ while True:
     battleGrid(displayGrid)
     player_shoot()
     ship = coordGrid[random_num1][random_num2]
+    os.system('cls' if os.name == 'nt' else 'clear')
     if ship == "x":
         print("You hit the ship!")
         break
