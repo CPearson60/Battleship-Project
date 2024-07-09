@@ -59,24 +59,29 @@ def computer_ship_place():
     # Initialize variables to track whether ships are sunk
     ship1_sunk = False
     ship2_sunk = False
-
+    n=0
     while True:
-        battleGrid(displayGrid)
-        player_shoot()
-
-        # Check if player hits ship 1 or ship 2
-        if coordGrid[random_num1][random_num2] == "x":
-            print("You hit ship 1!")
-            ship1_sunk = True  # Mark ship 1 as sunk
-        if coordGrid[random_num3][random_num4] == "x":
-            print("You hit ship 2!")
-            ship2_sunk = True  # Mark ship 2 as sunk
-
-        # Check if both ships have been sunk
-        if ship1_sunk and ship2_sunk:
-            print("Both ships have been sunk. You win!")
+        if n>5:
+            print("You Lose")
             break
+        else:
+            battleGrid(displayGrid)
+            player_shoot()
 
+            # Check if player hits ship 1 or ship 2
+            if coordGrid[random_num1][random_num2] == "x":
+                print("You hit ship 1!")
+                ship1_sunk = True  # Mark ship 1 as sunk
+            if coordGrid[random_num3][random_num4] == "x":
+                print("You hit ship 2!")
+                ship2_sunk = True  # Mark ship 2 as sunk
+
+            # Check if both ships have been sunk
+            if ship1_sunk and ship2_sunk:
+                print("Both ships have been sunk. You win!")
+                break
+            n+=1
+                
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid):
     # Print letters for columns header
@@ -120,19 +125,25 @@ def manual_ship_place():
     shipPlaceGrid(shipPlaceDisplayGrid)
 
     # Input for ship 2
+    n=0
     while True:
-        ship2 = input(f"Please enter the coordinate for your second ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
-
-        # Check if ship 2 is not placed on the same spot as ship 1
-        if ship2.upper() == ship1.upper():
-            print("A ship has already been placed there. Please enter a different coordinate.")
-            continue
-
-        if len(ship2) >= 2 and ship2[0].upper() in [chr(65 + i) for i in range(row_list)] and ship2[1:].isdigit() and int(ship2[1:]) <= col_list:
+        if n>5:
+            print("You Lose")
             break
-        else:
-            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+        else:   
+            ship2 = input(f"Please enter the coordinate for your second ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
 
+            # Check if ship 2 is not placed on the same spot as ship 1
+            if ship2.upper() == ship1.upper():
+                print("A ship has already been placed there. Please enter a different coordinate.")
+                continue
+
+            if len(ship2) >= 2 and ship2[0].upper() in [chr(65 + i) for i in range(row_list)] and ship2[1:].isdigit() and int(ship2[1:]) <= col_list:
+                break
+            else:
+                print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+            n+=1
+            
     row2 = ord(ship2[0].upper()) - ord('A')
     col2 = int(ship2[1:]) - 1
 
