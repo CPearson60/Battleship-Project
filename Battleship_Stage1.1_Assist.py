@@ -87,7 +87,7 @@ def computer_ship_place():
         print("Objective:\nSink The Ships In Five Turns")
         printship(s)
 
-        if n>5:
+        if n>4:
             print("You Lose")
             break
         else:
@@ -186,7 +186,7 @@ def manual_ship_place():
     while True:
         print("Objective:\nSink The Ships In Five Turns")
         printship(s)
-        if n>5:
+        if n>4:
             print("You Lose")
             break
         else:
