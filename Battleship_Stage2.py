@@ -184,7 +184,7 @@ print(f"""{Fore.RED}Description:
 print(Fore.WHITE+"Create Your Grid:")
 
 
-col_list = (input("How many columns (max 26): "))
+col_list = (input(" How many columns (max 26): "))
 
 try:
     if col_list.lower() == "quit":
@@ -201,7 +201,7 @@ try:
         else:
             col_list = int(col_list) 
 
-    row_list = (input("How many rows (max 26): "))
+    row_list = (input(" How many rows (max 26): "))
     if row_list.lower() == "quit":
                 print("The game has been forced quit. Have a nice day!")
                 quit()
