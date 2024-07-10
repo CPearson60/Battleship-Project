@@ -5,6 +5,29 @@ from colorama import init, Fore, Style
 # Initialize Colorama for colored output
 init()
 
+def printship(s):
+    
+    if s == 0:
+        print(Fore.WHITE+f"             # #  ( )                           # #  ( )  ")
+        print(Fore.WHITE+f"          ___#_#___|__                       ___#_#___|__")                                         
+        print(Fore.WHITE+f"      _  |____________|  _               _  |____________|  _")                                                                           
+        print(Fore.WHITE+f" _-==/___]_|__|____[___\==--___ .7  _-==/___]_|__|____[___\==--___ .7")                   
+        print(Fore.WHITE+f"|                          BB-61/  |                          BB-61/")               
+        print(Fore.WHITE+f"\______________________________/   \______________________________/")  
+        print(Fore.WHITE+"\n______________________________________________________________________\n")
+
+    if s == 1:
+        print(Fore.WHITE+f"             # #  ( )     ")
+        print(Fore.WHITE+f"          ___#_#___|__")                                         
+        print(Fore.WHITE+f"      _  |____________|  _")                                                                           
+        print(Fore.WHITE+f" _-==/___]_|__|____[___\==--___ .7")                   
+        print(Fore.WHITE+f"|                          BB-61/")               
+        print(Fore.WHITE+f"\______________________________/")
+        
+    if s == 2:
+        print("you win")
+
+
 # Function to create and display the battle grid
 def battleGrid(displayGrid):
     # Print letters for columns header
@@ -41,7 +64,6 @@ def player_shoot():
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
     coordGrid[row][col] = X
-
     return (displayGrid, coordGrid, X)
 
 # Function for computer to place ships
@@ -60,7 +82,11 @@ def computer_ship_place():
     ship1_sunk = False
     ship2_sunk = False
     n=0
+    s=0
     while True:
+        print("Objective:\nSink The Ships In Five Turns")
+        printship(s)
+
         if n>5:
             print("You Lose")
             break
@@ -71,16 +97,19 @@ def computer_ship_place():
             # Check if player hits ship 1 or ship 2
             if coordGrid[random_num1][random_num2] == "x":
                 print("You hit ship 1!")
+                s=1
                 ship1_sunk = True  # Mark ship 1 as sunk
             if coordGrid[random_num3][random_num4] == "x":
                 print("You hit ship 2!")
                 ship2_sunk = True  # Mark ship 2 as sunk
+                s=2
 
             # Check if both ships have been sunk
             if ship1_sunk and ship2_sunk:
                 print("Both ships have been sunk. You win!")
                 break
             n+=1
+            os.system('cls' if os.name == 'nt' else 'clear')
                 
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid):
@@ -153,6 +182,8 @@ def manual_ship_place():
     ship2_sunk = False
     n=0
     while True:
+        print("Objective:\nSink The Ships In Five Turns")
+
         if n>5:
             print("You Lose")
             break
@@ -196,6 +227,17 @@ Enter 0 or 1: """).strip()
 
 # Welcome message and grid size input
 print("Welcome to Battleship!")
+
+os.system('cls' if os.name == 'nt' else 'clear')
+s=0
+print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                         
+print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                            
+print(Fore.RED +   "  | |_) |  ,--. `| |-'`| |-'| | .---.  .--.   | |--.   __  _ .--.                                    =====| |.---------------------------. | |====")                            
+print(Fore.WHITE + "  |  __'. `'_\ : | |   | |  | |/ /__\\( (`\]  | .-. | [  |[ '/'`\ \                <--------------------'   .  .  .  .  .  .  .  .   '--------------/")                        
+print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | | \__/ |                 __..._____--==/___]_|__|_____________________________[___\==--____,------' .7")                   
+print(Fore.BLUE +  "|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.__/                 |                                                                     BB-61/")               
+print(Fore.BLUE +  "                                                           [__|                    \_______________________________________________WWS______________________/")
+
 
 col_list = int(input("How many columns (max 26): "))
 while col_list >= 27:
