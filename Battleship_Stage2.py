@@ -35,7 +35,7 @@ def computer_win():
     print(Fore.YELLOW+"                             \__ '`' __/")
     print(Fore.YELLOW+"                               _`) (`_" )
     print(Fore.YELLOW+"                             _/_______\_")
-    print(Fore.YELLOW+"                            /___________\ ")
+    print(Fore.YELLOW+"                            /___________\ \n")
 
 def player_win():
     print("   ___ _                          __    __ _           ")
@@ -54,7 +54,7 @@ def player_win():
     print(Fore.YELLOW+"                       \__ '`' __/")
     print(Fore.YELLOW+"                         _`) (`_" )
     print(Fore.YELLOW+"                       _/_______\_")
-    print(Fore.YELLOW+"                      /___________\ ")
+    print(Fore.YELLOW+"                      /___________\ \n")
     
 # Function to create and display the battle grid
 def battleGrid(displayGrid,row_list,col_list):
@@ -126,7 +126,7 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
         player_win()
         t=10
         while t > 0:
-            print(f"\n{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
             time.sleep(1)  # wait for 1 second
             t -= 1
         game()
@@ -150,7 +150,7 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
         computer_win()
         t=10
         while t > 0:
-            print(f"\n{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
             time.sleep(1)  # wait for 1 second
             t -= 1
         game()
