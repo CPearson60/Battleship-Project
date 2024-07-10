@@ -5,6 +5,8 @@ from colorama import init, Fore, Style
 # Initialize Colorama for colored output
 init()
 
+c=0
+n=0
 
 # Function to create and display the battle grid
 def battleGrid(displayGrid):
@@ -37,8 +39,8 @@ def player_shoot():
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
     # generate shot coordinates
-    row = ord(ship1[0].upper()) - ord('A')
-    col = int(ship1[1:]) - 1
+    row = ord(shot[0].upper()) - ord('A')
+    col = int(shot[1:]) - 1
 
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
@@ -62,22 +64,34 @@ def computer_shoot():
 # Function for computer to place ships
 def user_turn():
     
-    n=0
     print("User Objective:\nSink The Computer's Ship In Five Turns")
+    
+    battleGrid(displayGrid)
+    player_shoot()
 
-    if n>4:
-        print("You missed every shot! Better luck next time.")
+    # Check if player hits ship 1 or ship 2
+    if coordGrid[random_num3][random_num4] == "x":
+        print("You sunk the Computer's ship! You WIN!")
         quit()
-    else:
-        battleGrid(displayGrid)
-        player_shoot()
+    # os.system('cls' if os.name == 'nt' else 'clear')
 
-        # Check if player hits ship 1 or ship 2
-        if coordGrid[random_num3][random_num4] == "x":
-            print("You sunk the Computer's ship! You WIN!")
-            quit()
-        n+=1
-        os.system('cls' if os.name == 'nt' else 'clear')
+
+# Function for manual ship placement
+def computer_turn():
+
+    print("Computer Objective:\nSink The User's Ship In Five Turns")
+    # printship(s)
+
+    battleGrid(displayGrid)
+    computer_shoot()
+
+    # Check if player hits ship 1 or ship 2
+    if coordGrid[row1][col1] == "x":
+        print("Computer sunk your ship! Better luck next time.")
+        quit()  # Mark ship 1 as sunk
+
+    # os.system('cls' if os.name == 'nt' else 'clear')
+
                 
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid):
@@ -100,27 +114,6 @@ def shipPlaceGrid(shipPlaceDisplayGrid):
             print(shipPlaceDisplayGrid[i][j], end="   | ")  # Print grid content
         print()
 
-# Function for manual ship placement
-def computer_turn():
-
-    n=0
-
-    print("Computer Objective:\nSink The User's Ship In Five Turns")
-    # printship(s)
-    if n>4:
-        print("Computer missed every shot! You WIN!")
-        quit()
-    else:
-        battleGrid(displayGrid)
-        computer_shoot()
-
-        # Check if player hits ship 1 or ship 2
-        if coordGrid[row1][col1] == "x":
-            print("Computer sunk your ship! Better luck next time.")
-            quit()  # Mark ship 1 as sunk
-        n+=1
-        # os.system('cls' if os.name == 'nt' else 'clear')
-
 
 
 # Welcome message and grid size input
@@ -129,7 +122,6 @@ os.system('cls' if os.name == 'nt' else 'clear')
 print("Welcome to Battleship!")
 
 
-s=0
 print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                         
 print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                            
 print(Fore.RED +   "  | |_) |  ,--. `| |-'`| |-'| | .---.  .--.   | |--.   __  _ .--.                                    =====| |.---------------------------. | |====")                            
@@ -181,7 +173,6 @@ random_num4 = random.randint(0, col_list - 1)
 shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
 shipPlaceGrid(shipPlaceDisplayGrid)
 
-n=0
 while True:
     computer_turn()
     user_turn()
