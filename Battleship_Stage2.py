@@ -5,7 +5,45 @@ from colorama import init, Fore, Style
 # Initialize Colorama for colored output
 init()
 
+def computer_win():
 
+
+    print(f"   ___                            _              __    __ _           ")
+    print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
+    print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
+    print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
+    print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
+    print(f"                     |_|                                              ")
+
+    print("                            .-=========-.")
+    print("                            \'-=======-'/")
+    print("                            _|   .=.   |_")
+    print("                           ((|  {{1}}  |))")
+    print("                            \|   /|\   |/")
+    print("                             \__ '`' __/")
+    print("                               _`) (`_" )
+    print("                             _/_______\_")
+    print("                            /___________\ ")
+
+def player_win():
+    print("   ___ _                          __    __ _           ")
+    print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
+    print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
+    print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
+    print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
+    print("               |___/                                  ")
+    
+    
+    print("                      .-=========-.")
+    print("                      \'-=======-'/")
+    print("                       |   .=.   |_")
+    print("                     ((|  {{1}}  |))")
+    print("                      \|   /|\   |/")
+    print("                       \__ '`' __/")
+    print("                         _`) (`_" )
+    print("                       _/_______\_")
+    print("                      /___________\ ")
+    
 # Function to create and display the battle grid
 def battleGrid(displayGrid):
     # Print letters for columns header
@@ -70,6 +108,7 @@ def user_turn():
     # Check if player hits ship 1 or ship 2
     if coordGrid[random_num3][random_num4] == "x":
         print("You sunk the Computer's ship! You WIN!")
+        player_win()
         quit()
     # os.system('cls' if os.name == 'nt' else 'clear')
 
@@ -86,6 +125,7 @@ def computer_turn():
     # Check if player hits ship 1 or ship 2
     if coordGrid[row1][col1] == "x":
         print("Computer sunk your ship! Better luck next time.")
+        computer_win()
         quit()  # Mark ship 1 as sunk
 
     # os.system('cls' if os.name == 'nt' else 'clear')
@@ -128,14 +168,22 @@ print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | |
 print(Fore.BLUE +  "|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.__/                 |                                                                     BB-61/")               
 print(Fore.BLUE +  "                                                           [__|                    \_______________________________________________WWS______________________/")
 
+print(f"""{Fore.RED}Description:
+{Fore.LIGHTBLACK_EX}    The game starts with a 5x5 grid displayed on the screen.
+{Fore.LIGHTBLACK_EX}    You will be prompted to input the coordinates where you want to shoot.
+{Fore.LIGHTBLACK_EX}    Coordinates should be in the format X,# (e.g., A,1).
+{Fore.LIGHTBLACK_EX}    If your shot hits the ship, you win and the game ends.
+{Fore.LIGHTBLACK_EX}    If your shot misses, you can try again.
+{Fore.LIGHTBLACK_EX}    The game will update the grid after each shot to reflect the shots fired.\n""")
 
-col_list = int(input("How many columns (max 26): "))
+print(Fore.WHITE+"Create Your Grid:")
+col_list = int(input(Fore.BLUE+"    How many columns (max 26): "))
 while col_list >= 27:
-    col_list = int(input("Too many. Maximum columns is 26. How many columns: "))
+    col_list = int(input("  Too many. Maximum columns is 26. How many columns: "))
 
-row_list = int(input("How many rows (max 26): "))
+row_list = int(input("  How many rows (max 26): "))
 while row_list >= 27:
-    row_list = int(input("Too many. Maximum rows is 26. How many rows: "))
+    row_list = int(input("  Too many. Maximum rows is 26. How many rows: "))
 
 alphabet_lower = [] 
 for i in range(row_list):
