@@ -157,29 +157,6 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-                
-# Function to display the ship placement grid
-def shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list):
-    # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
-    for col in range(col_list):
-        if col + 1 == 1:
-            print(f"{col + 1}", end="  |")
-        else:
-            if col < 9:
-                print(f"  {col + 1}", end="  |")
-            else:
-                print(f" {col + 1}", end="  |")
-    print("")
-
-    # Print grid rows
-    for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
-        for j in range(col_list):
-            print(shipPlaceDisplayGrid[i][j], end="   | ")  # Print grid content
-        print()
-
-
 
 # Welcome message and grid size input
 def game():
@@ -223,11 +200,9 @@ def game():
     # Initialize grids
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
     coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-    shipPlaceDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
-    # Start ship placement method selection
     # Display initial ship placement grid
-    shipPlaceGrid(shipPlaceDisplayGrid,row_list,col_list)
+    battleGrid(displayGrid,row_list,col_list)
 
     # Input for user ship
     while True:
@@ -249,8 +224,8 @@ def game():
     random_num4 = random.randint(0, col_list - 1)
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
-    shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list)
+    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
+    battleGrid(displayGrid,row_list,col_list)
 
     while True:
         computer_turn(displayGrid, coordGrid,row1,col1,row_list,col_list)
