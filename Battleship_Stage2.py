@@ -5,6 +5,17 @@ from colorama import init, Fore, Style
 # Initialize Colorama for colored output
 init()
 
+def int_input(prompt, selection):
+    x = input(prompt)
+    while not x.isnumeric() or not int(x) in selection:
+        if x.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+        else:
+            x = input(prompt)
+    return int(x)
+
+
 def computer_win():
 
 
@@ -184,39 +195,11 @@ print(f"""{Fore.RED}Description:
 print(Fore.WHITE+"Create Your Grid:")
 
 
-col_list = (input(Fore.BLUE+"    How many columns (max 26): "))
+# EDGE CASES!!
+col_list = int_input(Fore.BLUE+"    How many columns (max 26): ", range(0, 27))
 
-try:
-    if col_list.lower() == "quit":
-                print("The game has been forced quit. Have a nice day!")
-                quit()
-    else:
-        col_list = int(col_list) 
+row_list = int_input("    How many rows (max 26): ", range(0, 27))
 
-    while col_list >= 27:
-        col_list = (input("    Too many. Maximum columns is 26. How many columns: "))
-        if col_list.lower() == "quit":
-                print("The game has been quit. Have a nice day!")
-                quit()
-        else:
-            col_list = int(col_list) 
-
-    row_list = (input("    How many rows (max 26): "))
-    if row_list.lower() == "quit":
-                print("The game has been forced quit. Have a nice day!")
-                quit()
-    else:
-        row_list = int(row_list) 
-
-    while row_list >= 27:
-        row_list = (input("    Too many. Maximum rows is 26. How many rows: "))
-        if row_list.lower() == "quit":
-                print("The game has been forced quit. Have a nice day!")
-                quit()
-        else:
-            row_list = int(row_list) 
-except:
-     print("Invalid input. Please enter a valid input.")
 
 alphabet_lower = [] 
 for i in range(row_list):
