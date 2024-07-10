@@ -77,7 +77,7 @@ def comp_shoot(alphabet_lower):
         randomletter = chr(random.randint(ord('A'), ord('E')))
         randomint=str(random.randint(1,26))
         shot = randomletter+randomint
-        if len(shot) == 2 and shot[0].lower() in [alphabet_lower] and shot[1].isdigit() and int(shot[1]) <= col_list:
+        if len(shot) == 2 and shot[0].lower() in alphabet_lower and shot[1].isdigit() and int(shot[1]) <= col_list:
             break
         else:
              randomletter = chr(random.randint(ord('A'), ord('Z')))
@@ -161,7 +161,7 @@ def shipPlaceGrid(shipPlaceDisplayGrid):
         print()
 
 # Function for manual ship placement
-def manual_ship_place(alphabet_lower):
+def manual_ship_place():
 
     # Display initial ship placement grid
     shipPlaceGrid(shipPlaceDisplayGrid)
