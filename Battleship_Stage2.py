@@ -111,7 +111,7 @@ def computer_win():
     print(Fore.YELLOW+"                             \__ '`' __/")
     print(Fore.YELLOW+"                               _`) (`_" )
     print(Fore.YELLOW+"                             _/_______\_")
-    print(Fore.YELLOW+"                            /___________\ ")
+    print(Fore.YELLOW+"                            /___________\ \n")
 
 def player_win():
     print("   ___ _                          __    __ _           ")
@@ -130,7 +130,7 @@ def player_win():
     print(Fore.YELLOW+"                       \__ '`' __/")
     print(Fore.YELLOW+"                         _`) (`_" )
     print(Fore.YELLOW+"                       _/_______\_")
-    print(Fore.YELLOW+"                      /___________\ ")
+    print(Fore.YELLOW+"                      /___________\ \n")
     
 # Function to create and display the battle grid
 def battleGrid(displayGrid,row_list,col_list):
@@ -203,8 +203,11 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
         shipAnimation_hit()
         print("You sunk the Computer's ship! You WIN!")
         player_win()
-        print(Fore.WHITE+"Back To Menu In 5 Seconds")
-        time.sleep(5)
+        t=10
+        while t > 0:
+            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            time.sleep(1)  # wait for 1 second
+            t -= 1
         game()
         
         
@@ -224,34 +227,14 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
     if coordGrid[row1][col1] == "x":
         print("Computer sunk your ship! Better luck next time.")
         computer_win()
-        print(Fore.WHITE+"Back To Menu In 5 Seconds")
-        time.sleep(5)
+        t=10
+        while t > 0:
+            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            time.sleep(1)  # wait for 1 second
+            t -= 1
         game()
 
     os.system('cls' if os.name == 'nt' else 'clear')
-
-                
-# Function to display the ship placement grid
-def shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list):
-    # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
-    for col in range(col_list):
-        if col + 1 == 1:
-            print(f"{col + 1}", end="  |")
-        else:
-            if col < 9:
-                print(f"  {col + 1}", end="  |")
-            else:
-                print(f" {col + 1}", end="  |")
-    print("")
-
-    # Print grid rows
-    for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
-        for j in range(col_list):
-            print(shipPlaceDisplayGrid[i][j], end="   | ")  # Print grid content
-        print()
-
 
 
 # Welcome message and grid size input
@@ -296,11 +279,9 @@ def game():
     # Initialize grids
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
     coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-    shipPlaceDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
-    # Start ship placement method selection
     # Display initial ship placement grid
-    shipPlaceGrid(shipPlaceDisplayGrid,row_list,col_list)
+    battleGrid(displayGrid,row_list,col_list)
 
     # Input for user ship
     while True:
@@ -322,8 +303,8 @@ def game():
     random_num4 = random.randint(0, col_list - 1)
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
-    shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list)
+    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
+    battleGrid(displayGrid,row_list,col_list)
 
     while True:
         computer_turn(displayGrid, coordGrid,row1,col1,row_list,col_list)
