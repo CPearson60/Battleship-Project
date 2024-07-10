@@ -8,21 +8,21 @@ init()
 def printship(s):
     
     if s == 0:
-        print(Fore.WHITE+f"             # #  ( )                           # #  ( )  ")
-        print(Fore.WHITE+f"          ___#_#___|__                       ___#_#___|__")                                         
-        print(Fore.WHITE+f"      _  |____________|  _               _  |____________|  _")                                                                           
-        print(Fore.WHITE+f" _-==/___]_|__|____[___\==--___ .7  _-==/___]_|__|____[___\==--___ .7")                   
-        print(Fore.WHITE+f"|                          BB-61/  |                          BB-61/")               
-        print(Fore.WHITE+f"\______________________________/   \______________________________/")  
-        print(Fore.WHITE+"\n______________________________________________________________________\n")
+        print(Style.RESET_ALL+f"             # #  ( )                           # #  ( )  ")
+        print(Style.RESET_ALL+f"          ___#_#___|__                       ___#_#___|__")                                         
+        print(Style.RESET_ALL+f"      _  |____________|  _               _  |____________|  _")                                                                           
+        print(Style.RESET_ALL+f" _-==/___]_|__|____[___\==--___ .7  _-==/___]_|__|____[___\==--___ .7")                   
+        print(Style.RESET_ALL+f"|                          BB-61/  |                          BB-61/")               
+        print(Style.RESET_ALL+f"\______________________________/   \______________________________/")  
+        print(Style.RESET_ALL+"\n______________________________________________________________________\n")
 
     if s == 1:
-        print(Fore.WHITE+f"             # #  ( )     ")
-        print(Fore.WHITE+f"          ___#_#___|__")                                         
-        print(Fore.WHITE+f"      _  |____________|  _")                                                                           
-        print(Fore.WHITE+f" _-==/___]_|__|____[___\==--___ .7")                   
-        print(Fore.WHITE+f"|                          BB-61/")               
-        print(Fore.WHITE+f"\______________________________/")
+        print(Style.RESET_ALL+f"             # #  ( )     ")
+        print(Style.RESET_ALL+f"          ___#_#___|__")                                         
+        print(Style.RESET_ALL+f"      _  |____________|  _")                                                                           
+        print(Style.RESET_ALL+f" _-==/___]_|__|____[___\==--___ .7")                   
+        print(Style.RESET_ALL+f"|                          BB-61/")               
+        print(Style.RESET_ALL+f"\______________________________/")
         
     if s == 2:
         print("you win")
