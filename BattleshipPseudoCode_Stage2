@@ -1,0 +1,10 @@
+two boards - player and computer
+
+one 1x1 ship per board
+player gets to choose placement for their board
+computer will randomly generate for computer board
+
+use the same user board from stage 1.1
+have a duplicate of the board for the computer except:
+- prompt computer to randomly generate a board with 
+  min and max col and row requirements
