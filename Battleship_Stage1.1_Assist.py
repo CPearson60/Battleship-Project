@@ -102,11 +102,12 @@ def computer_ship_place():
             if coordGrid[random_num3][random_num4] == "x":
                 print("You hit ship 2!")
                 ship2_sunk = True  # Mark ship 2 as sunk
-                s=2
+                s=1
 
             # Check if both ships have been sunk
             if ship1_sunk and ship2_sunk:
                 print("Both ships have been sunk. You win!")
+                s=2
                 break
             n+=1
             os.system('cls' if os.name == 'nt' else 'clear')
@@ -181,9 +182,10 @@ def manual_ship_place():
     ship1_sunk = False
     ship2_sunk = False
     n=0
+    s=0
     while True:
         print("Objective:\nSink The Ships In Five Turns")
-
+        printship(s)
         if n>5:
             print("You Lose")
             break
@@ -194,16 +196,20 @@ def manual_ship_place():
             # Check if player hits ship 1 or ship 2
             if coordGrid[row1][col1] == "x":
                 print("You hit ship 1!")
+                s=1
                 ship1_sunk = True  # Mark ship 1 as sunk
             if coordGrid[row2][col2] == "x":
                 print("You hit ship 2!")
                 ship2_sunk = True  # Mark ship 2 as sunk
+                s=1
 
             # Check if both ships have been sunk
             if ship1_sunk and ship2_sunk:
                 print("Both ships have been sunk. You win!")
+                s=2
                 break
             n+=1
+            os.system('cls' if os.name == 'nt' else 'clear')
 # Function to choose ship placement method
 def ship_place_method():
     while True:
