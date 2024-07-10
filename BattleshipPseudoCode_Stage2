@@ -8,3 +8,11 @@ use the same user board from stage 1.1
 have a duplicate of the board for the computer except:
 - prompt computer to randomly generate a board with 
   min and max col and row requirements
+
+get computer and player turns to alternate
+
+edge cases:
+- show player ship the whole time
+- make it so player cannot hit their own ship
+- make it so that computer cannot have their ship where
+  the player's ship is; prompt player to repick ship
