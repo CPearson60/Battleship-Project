@@ -30,14 +30,15 @@ def battleGrid(displayGrid):
 # Function for player to shoot
 def player_shoot():
     while True:
-        shot = input("Where do you want to shoot? (A-E,1-{}): ".format(col_list)).strip().replace(",", "")
-        if len(shot) == 2 and shot[0].lower() in alphabet_lower and shot[1].isdigit() and int(shot[1]) <= col_list:
+        shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
+        if len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
             break
         else:
-            print("Invalid input. Please enter a valid coordinate (A-E,1-{}).".format(col_list))
+            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
-    row = ord(shot[0].lower()) - ord('a')
-    col = int(shot[1]) - 1
+    # generate shot coordinates
+    row = ord(ship1[0].upper()) - ord('A')
+    col = int(ship1[1:]) - 1
 
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
@@ -168,6 +169,7 @@ while True:
     else:
         print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
+# generates coords of the user ship
 row1 = ord(ship1[0].upper()) - ord('A')
 col1 = int(ship1[1:]) - 1
 
