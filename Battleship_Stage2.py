@@ -5,7 +5,84 @@ import time
 
 # Initialize Colorama for colored output
 init()
+def shipAnimation_miss():
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==         ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==    8--->>>>        ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==                8--->>>>        ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print("           _      ")   
+    print(" _ __ ___ (_)___ ___ ")
+    print("| '_ ` _ \| / __/ __|")
+    print("| | | | | | \__ \__ \ ")
+    print("|_| |_| |_|_|___/___/")
+    time.sleep(1)
+    os.system('cls' if os.name == 'nt' else 'clear')
 
+def shipAnimation_hit():
+    
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==         ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==    8--->>>>        ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(Style.RESET_ALL+f"             # #  ( )     ")
+    print(Style.RESET_ALL+f"          ___#_#___|__        ")
+    print(Style.RESET_ALL+f"         |___|__|____/           __     ")                           
+    print(Style.RESET_ALL+f"      _  |____________|         |  |==                8--->>>>        ")                                                                           
+    print(Style.RESET_ALL+f" _-==/___]_|__|____[___\________/__\_ .7")                   
+    print(Style.RESET_ALL+f"|                                BB-61/")               
+    print(Style.RESET_ALL+f"\____________________________________/")
+    time.sleep(.5)
+    os.system('cls' if os.name == 'nt' else 'clear')
+    print(" _     _ _   ")   
+    print("| |__ (_) |_ ")
+    print("| '_ \| | __|")
+    print("| | | | | |_  ")
+    print("|_| |_|_|\__|")      
+    time.sleep(1)
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+
+    
 def int_input(prompt, selection):
     x = input(prompt)
     while not x.isnumeric() or not int(x) in selection:
@@ -15,7 +92,6 @@ def int_input(prompt, selection):
         else:
             x = input(prompt)
     return int(x)
-
 
 def computer_win():
 
@@ -119,9 +195,12 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
     
     battleGrid(displayGrid,row_list,col_list)
     player_shoot(displayGrid,coordGrid,col_list,row_list)
+    if coordGrid[random_num3][random_num4] != "x":
+        shipAnimation_miss()
 
     # Check if player hits ship 1 or ship 2
     if coordGrid[random_num3][random_num4] == "x":
+        shipAnimation_hit()
         print("You sunk the Computer's ship! You WIN!")
         player_win()
         print(Fore.WHITE+"Back To Menu In 5 Seconds")
