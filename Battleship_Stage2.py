@@ -31,7 +31,7 @@ def battleGrid(displayGrid):
 def player_shoot():
     while True:
         shot = input("Where do you want to shoot? (A-E,1-{}): ".format(col_list)).strip().replace(",", "")
-        if len(shot) == 2 and shot[0].lower() in ["a", "b", "c", "d", "e"] and shot[1].isdigit() and int(shot[1]) <= col_list:
+        if len(shot) == 2 and shot[0].lower() in alphabet_lower and shot[1].isdigit() and int(shot[1]) <= col_list:
             break
         else:
             print("Invalid input. Please enter a valid coordinate (A-E,1-{}).".format(col_list))
@@ -145,6 +145,11 @@ while col_list >= 27:
 row_list = int(input("How many rows (max 26): "))
 while row_list >= 27:
     row_list = int(input("Too many. Maximum rows is 26. How many rows: "))
+
+alphabet_lower = [] 
+for i in range(row_list):
+        letter = chr(ord('a') + i)  # Get the ASCII character corresponding to 'a' + i
+        alphabet_lower.append(letter)
 
 # Initialize grids
 displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
