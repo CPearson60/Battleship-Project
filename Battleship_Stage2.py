@@ -5,8 +5,6 @@ from colorama import init, Fore, Style
 # Initialize Colorama for colored output
 init()
 
-c=0
-n=0
 
 # Function to create and display the battle grid
 def battleGrid(displayGrid):
