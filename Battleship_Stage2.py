@@ -31,7 +31,10 @@ def battleGrid(displayGrid):
 def player_shoot():
     while True:
         shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
-        if len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
+        if shot.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+        elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
             break
         else:
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
@@ -71,7 +74,7 @@ def user_turn():
     if coordGrid[random_num3][random_num4] == "x":
         print("You sunk the Computer's ship! You WIN!")
         quit()
-    # os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 # Function for manual ship placement
@@ -88,7 +91,7 @@ def computer_turn():
         print("Computer sunk your ship! Better luck next time.")
         quit()  # Mark ship 1 as sunk
 
-    # os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear')
 
                 
 # Function to display the ship placement grid
@@ -128,14 +131,37 @@ print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | |
 print(Fore.BLUE +  "|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.__/                 |                                                                     BB-61/")               
 print(Fore.BLUE +  "                                                           [__|                    \_______________________________________________WWS______________________/")
 
+print("Please enter \"Quit\" at any time to end the game.")
 
-col_list = int(input("How many columns (max 26): "))
+col_list = (input("How many columns (max 26): "))
+if col_list.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+else:
+    col_list = int(col_list) 
+
 while col_list >= 27:
-    col_list = int(input("Too many. Maximum columns is 26. How many columns: "))
+    col_list = (input("Too many. Maximum columns is 26. How many columns: "))
+    if col_list.lower() == "quit":
+            print("The game has been quit. Have a nice day!")
+            quit()
+    else:
+        col_list = int(col_list) 
 
-row_list = int(input("How many rows (max 26): "))
+row_list = (input("How many rows (max 26): "))
+if row_list.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+else:
+    row_list = int(row_list) 
+
 while row_list >= 27:
-    row_list = int(input("Too many. Maximum rows is 26. How many rows: "))
+    row_list = (input("Too many. Maximum rows is 26. How many rows: "))
+    if row_list.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+    else:
+        row_list = int(row_list) 
 
 alphabet_lower = [] 
 for i in range(row_list):
@@ -154,7 +180,10 @@ shipPlaceGrid(shipPlaceDisplayGrid)
 # Input for user ship
 while True:
     ship1 = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
-    if len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
+    if ship1.lower() == "quit":
+        print("The game has been forced quit. Have a nice day!")
+        quit()
+    elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
         break
     else:
         print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
