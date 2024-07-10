@@ -124,8 +124,11 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
     if coordGrid[random_num3][random_num4] == "x":
         print("You sunk the Computer's ship! You WIN!")
         player_win()
-        print(Fore.WHITE+"Back To Menu In 5 Seconds")
-        time.sleep(5)
+        t=10
+        while t > 0:
+            print(f"\n{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            time.sleep(1)  # wait for 1 second
+            t -= 1
         game()
         
         
@@ -145,8 +148,11 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
     if coordGrid[row1][col1] == "x":
         print("Computer sunk your ship! Better luck next time.")
         computer_win()
-        print(Fore.WHITE+"Back To Menu In 5 Seconds")
-        time.sleep(5)
+        t=10
+        while t > 0:
+            print(f"\n{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            time.sleep(1)  # wait for 1 second
+            t -= 1
         game()
 
     os.system('cls' if os.name == 'nt' else 'clear')
