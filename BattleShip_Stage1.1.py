@@ -31,7 +31,7 @@ def printship(s):
 # Function to create and display the battle grid
 def battleGrid(displayGrid):
     # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
+    print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
         if col + 1 == 1:
             print(f"{col + 1}", end="  |")
@@ -44,7 +44,7 @@ def battleGrid(displayGrid):
 
     # Print grid rows
     for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
+        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
         for j in range(col_list):
             print(displayGrid[i][j], end="   | ")  # Print grid content
         print()
@@ -62,7 +62,7 @@ def player_shoot():
     col = int(shot[1]) - 1
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
@@ -115,7 +115,7 @@ def computer_ship_place():
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid):
     # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
+    print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
         if col + 1 == 1:
             print(f"{col + 1}", end="  |")
@@ -128,7 +128,7 @@ def shipPlaceGrid(shipPlaceDisplayGrid):
 
     # Print grid rows
     for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
+        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
         for j in range(col_list):
             print(shipPlaceDisplayGrid[i][j], end="   | ")  # Print grid content
         print()
@@ -151,7 +151,7 @@ def manual_ship_place():
     col1 = int(ship1[1:]) - 1
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
+    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
     shipPlaceGrid(shipPlaceDisplayGrid)
 
     # Input for ship 2
@@ -175,7 +175,7 @@ def manual_ship_place():
     col2 = int(ship2[1:]) - 1
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row2][col2] = f"{Fore.LIGHTRED_EX} O {Fore.LIGHTCYAN_EX}"
+    shipPlaceDisplayGrid[row2][col2] = f"{Fore.LIGHTRED_EX} O {Fore.BLUE}"
     os.system('cls' if os.name == 'nt' else 'clear')
 
     # Initialize variables to track whether ships are sunk

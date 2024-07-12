@@ -1,7 +1,7 @@
 import random
 import os
 from colorama import init, Fore, Style
-import time
+import time, keyboard
 
 # Initialize Colorama for colored output
 init()
@@ -419,12 +419,12 @@ def shipAnimation_hit():
 def computer_win():
 
 
-    print(f"   ___                            _              __    __ _           ")
-    print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
-    print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
-    print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
-    print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
-    print(f"                     |_|                                              ")
+    print(Fore.BLUE + f"   ___                            _              __    __ _           ")
+    print(Fore.BLUE + f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
+    print(Fore.BLUE + f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
+    print(Fore.BLUE + f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
+    print(Fore.BLUE + f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
+    print(Fore.BLUE + f"                     |_|                                              ")
 
     print(Fore.YELLOW+"                            .-=========-.")
     print(Fore.YELLOW+"                            \'-=======-'/")
@@ -438,12 +438,12 @@ def computer_win():
 
 ####################################################(Animations)###############################################################  
 def player_win():
-    print("   ___ _                          __    __ _           ")
-    print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
-    print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
-    print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
-    print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
-    print("               |___/                                  ")
+    print(Fore.BLUE + "   ___ _                          __    __ _           ")
+    print(Fore.BLUE + "  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
+    print(Fore.BLUE + " / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
+    print(Fore.BLUE + "/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
+    print(Fore.BLUE + "\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
+    print(Fore.BLUE + "               |___/                                  ")
     
     
     print(Fore.YELLOW+"                      .-=========-.")
@@ -536,7 +536,7 @@ def battleGrid(displayGrid,row_list,col_list):
 # Function for player to shoot
 def player_shoot(displayGrid,coordGrid,col_list,row_list):
     while True:
-        shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
+        shot = input(Fore.RED + f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
         # .lower is case insinstive 
         if shot.lower() == "quit":
             print("The game has been forced quit. Have a nice day!")
@@ -545,7 +545,7 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
         elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
             break
         else:
-            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+            print(Fore.RED + f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
     # generate shot coordinates
     # the fuction ord generates unicode for input
@@ -555,7 +555,25 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
     
     #shot[1] = int value | number value
     col = int(shot[1:]) - 1
-
+    while True:
+        if coordGrid[row][col] == 'x':
+            while True:
+                print("Point Was Already Shot!!")
+                shot = input(Fore.RED + f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
+                # .lower is case insinstive 
+                if shot.lower() == "quit":
+                    print("The game has been forced quit. Have a nice day!")
+                    quit()
+                #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int
+                elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
+                    row = ord(shot[0].upper()) - ord('A')
+                    col = int(shot[1:]) - 1                  
+                    break
+                else:
+                    print(Fore.RED + f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")     
+        else:
+            break   
+           
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
@@ -565,9 +583,16 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
 def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     random_num1 = random.randint(0, row_list - 1)
     random_num2 = random.randint(0, col_list - 1)
-        
-    row = random_num1
-    col = random_num2
+    
+    while True: 
+        row = random_num1
+        col = random_num2
+        if coordGrid[row][col] == 'x':
+            random_num1 = random.randint(0, row_list - 1)
+            random_num2 = random.randint(0, col_list - 1)
+        else:
+            break
+
     print(f"Computer shoots at {random_num1},{random_num2}")
 
     X = "x"
@@ -580,7 +605,7 @@ def computer_shoot(row_list,col_list,displayGrid,coordGrid):
 # Function for computer to place ships
 def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
     
-    print("User Objective:\nSink The Computer's Ship In Five Turns")
+    print(Fore.RED + "User Objective:\nSink The Computer's Ship In Five Turns")
     
     battleGrid(displayGrid,row_list,col_list)
     player_shoot(displayGrid,coordGrid,col_list,row_list)
@@ -597,10 +622,12 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
             print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
             time.sleep(1)  # wait for 1 second
             t -= 1
-        game()
+        game(gridCreate_check,row_list,col_list)
+        
         
         
     os.system('cls' if os.name == 'nt' else 'clear')
+    
 
 # Gianna
 # Function for manual ship placement
@@ -621,13 +648,13 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
             print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
             time.sleep(1)  # wait for 1 second
             t -= 1
-        game()
+        game(gridCreate_check,row_list,col_list)
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Cameron
 # Welcome message and grid size input
-def game():
+def game(gridCreate_check,row_list,col_list):
     os.system('cls' if os.name == 'nt' else 'clear')
     print(Fore.WHITE +"Welcome to Battleship!")
 
@@ -635,9 +662,9 @@ def game():
     print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                          
     print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                             
     print(Fore.RED +   "  | |_) |  ,--. `| |-'`| |-'| | .---.  .--.   | |--.   __  _ .--.                                    =====| |.---------------------------. | |====")                            
-    print(Fore.WHITE + "  |  __'. `'_\ : | |   | |  | |/ /__\\( (`\]  | .-. | [  |[ '/'`\ \                <--------------------'   .  .  .  .  .  .  .  .   '--------------/")                        
+    print(Fore.WHITE + "  |  __'. `'_\ : | |   | |  | |/ /_\_\( (`\]  | .-. | [  |[ '/'`\ \                <--------------------'   .  .  .  .  .  .  .  .   '--------------/")                        
     print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | | \__/ |                 __..._____--==/___]_|__|_____________________________[___\==--____,------' .7")                   
-    print(Fore.BLUE +  "|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.___/                 |                                                                     BB-61/")               
+    print(Fore.BLUE +  "|_______/ \-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___] | ;.___/                |                                                                     BB-61/")               
     print(Fore.BLUE +  "                                                           [__|                    \_______________________________________________WWS______________________/")
 
 
@@ -648,57 +675,109 @@ def game():
         If your shot hits the ship, you win and the game ends.
         If your shot misses, you can try again.
         The game will update the grid after each shot to reflect the shots fired.
-    {Fore.RED}    Please enter \"Quit\" at any time to end the game.\n""")
+    {Fore.RED}    Please enter \"Quit\" at any time during the game to end the game.\n""")
+
+
+    print (f"""
+{Fore.RED}Menu Selection:     
+    
+{Fore.BLUE}       [1] Select Grid
+    
+{Fore.BLUE}       [2] Start Single Player  
+    
+{Fore.BLUE}       [3] Quit Game               
+                    
+                           """)
 
 
     
-
-    print(Fore.WHITE+"Create Your Grid:")
-
-
-
-    col_list = int_input(Fore.BLUE+"    How many columns (max 26): ", range(0, 27))
-
-    row_list = int_input("    How many rows (max 26): ", range(0, 27))
-
-
-    # Gianna
-    # Initialize grids
-    displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-    coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-
-    # Display initial ship placement grid
-    battleGrid(displayGrid,row_list,col_list)
-
-    # Input for user ship
     while True:
-        ship1 = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
-        if ship1.lower() == "quit":
-            print("The game has been forced quit. Have a nice day!")
-            quit()
-        elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
-            break
-        else:
-            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
-
-    # generates coords of the user ship
-    row1 = ord(ship1[0].upper()) - ord('A')
-    col1 = int(ship1[1:]) - 1
-
-    # Initialize ship positions for computer randomly
-    random_num3 = random.randint(0, row_list - 1)
-    random_num4 = random.randint(0, col_list - 1)
-
-    # Mark ship on shipPlaceGrid
-    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-    battleGrid(displayGrid,row_list,col_list)
-
-    # Alternates turns between the computer and the player
-    while True:
-        computer_turn(displayGrid, coordGrid,row1,col1,row_list,col_list)
-        user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list)
         
-game()
+        if keyboard.read_key() == '1':
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(Fore.WHITE+"Create Your Grid:")
+            while True:
+                
+                col_list = int_input(Fore.BLUE+"    How many columns (max 26): ", range(0, 27))
+
+                row_list = int_input("    How many rows (max 26): ", range(0, 27))
+                
+                displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)] 
+                
+                battleGrid(displayGrid,row_list,col_list)
+                
+                
+                while True: 
+                    print("Are You Satsified With Your Board:\n   [1]Yes\n   [2]Create New Board\n")
+                    if keyboard.read_key() == '1':
+                        gridCreate_check=1       
+                        game(gridCreate_check,row_list,col_list)
+                        break
+                        
+                    if keyboard.read_key() == '2':
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        col_list = int_input(Fore.BLUE+"    How many columns (max 26): ", range(0, 27))
+
+                        row_list = int_input("    How many rows (max 26): ", range(0, 27))
+                        
+                        displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)] 
+                        
+        elif keyboard.read_key() == '3':
+            print("\nThe game has been forced quit. Have a nice day!")
+            quit()
+            
+        else:
+            if keyboard.read_key() == '2' and gridCreate_check == 1:
+                
+                # Gianna
+                # Initialize grids
+                displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+                coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+
+                print (Fore.RED + "Ship Placement Single Player Selection:\n")
+                # Display initial ship placement grid
+                battleGrid(displayGrid,row_list,col_list)
+                # Input for user ship
+                while True:
+                    ship1 = input(f"\nPlease enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
+                    if ship1.lower() == "quit":
+                        print("\nThe game has been forced quit. Have a nice day!")
+                        quit()
+                    elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
+                        break
+                    else:
+                        print(f"\nInvalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+
+                # generates coords of the user ship
+                row1 = ord(ship1[0].upper()) - ord('A')
+                col1 = int(ship1[1:]) - 1
+
+                # Initialize ship positions for computer randomly
+                random_num3 = random.randint(0, row_list - 1)
+                random_num4 = random.randint(0, col_list - 1)
+                while True:
+                    if random_num3 != row1 and random_num4 != col1:
+                        break
+                    else:
+                        random_num3 = random.randint(0, row_list - 1)
+                        random_num4 = random.randint(0, col_list - 1)
+
+                # Mark ship on shipPlaceGrid
+                displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
+                battleGrid(displayGrid,row_list,col_list)
+
+                # Alternates turns between the computer and the player
+                while True:
+                    computer_turn(displayGrid, coordGrid,row1,col1,row_list,col_list)
+                    user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list)
+            elif keyboard.read_key(1) == '2' and gridCreate_check != 1:
+                
+                print("Create grid first")
+
+gridCreate_check=0  
+row_list = 0
+col_list = 0
+game(gridCreate_check,row_list,col_list)
 
 # Entire functioning program: 206 lines
 # (Lines w/out animations)

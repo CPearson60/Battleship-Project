@@ -27,15 +27,15 @@ def battleGrid(displayGrid):
     
     # prints the grid
     print("\n   1     2     3     4     5")
-    print("A " + Fore.LIGHTCYAN_EX + f"{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "B " + Fore.LIGHTCYAN_EX + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "C " + Fore.LIGHTCYAN_EX + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "D " + Fore.LIGHTCYAN_EX + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
-    print(Fore.LIGHTCYAN_EX + "  ----+-----+-----+-----+----")
-    print(Style.RESET_ALL + "E " + Fore.LIGHTCYAN_EX + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
+    print("A " + Fore.BLUE + f"{displayGrid[0][0]} | {displayGrid[0][1]} | {displayGrid[0][2]} | {displayGrid[0][3]} | {displayGrid[0][4]}")
+    print(Fore.BLUE + "  ----+-----+-----+-----+----")
+    print(Style.RESET_ALL + "B " + Fore.BLUE + f"{displayGrid[1][0]} | {displayGrid[1][1]} | {displayGrid[1][2]} | {displayGrid[1][3]} | {displayGrid[1][4]}")
+    print(Fore.BLUE + "  ----+-----+-----+-----+----")
+    print(Style.RESET_ALL + "C " + Fore.BLUE + f"{displayGrid[2][0]} | {displayGrid[2][1]} | {displayGrid[2][2]} | {displayGrid[2][3]} | {displayGrid[2][4]}")
+    print(Fore.BLUE + "  ----+-----+-----+-----+----")
+    print(Style.RESET_ALL + "D " + Fore.BLUE + f"{displayGrid[3][0]} | {displayGrid[3][1]} | {displayGrid[3][2]} | {displayGrid[3][3]} | {displayGrid[3][4]}")
+    print(Fore.BLUE + "  ----+-----+-----+-----+----")
+    print(Style.RESET_ALL + "E " + Fore.BLUE + f"{displayGrid[4][0]} | {displayGrid[4][1]} | {displayGrid[4][2]} | {displayGrid[4][3]} | {displayGrid[4][4]}\n")
     print(Style.RESET_ALL)
 
     return coordGrid, displayGrid
@@ -56,7 +56,7 @@ def player_shoot():
     col = int(shot[1]) - 1
     
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX} {X} {Fore.BLUE}"
     coordGrid[row][col] = X
     
 

@@ -204,7 +204,7 @@ def player_win():
 # Function to create and display the battle grid
 def battleGrid(displayGrid,row_list,col_list):
     # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
+    print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
         if col + 1 == 1:
             print(f"{col + 1}", end="  |")
@@ -217,7 +217,7 @@ def battleGrid(displayGrid,row_list,col_list):
 
     # Print grid rows
     for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
+        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
         for j in range(col_list):
             print(displayGrid[i][j], end="   | ")  # Print grid content
         print()
@@ -239,7 +239,7 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
     col = int(shot[1:]) - 1
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
@@ -252,7 +252,7 @@ def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     print(f"Computer shoots at {random_num1},{random_num2}")
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTMAGENTA_EX}{X}{Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTMAGENTA_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
@@ -372,7 +372,7 @@ def game():
             
     row1 = ord(ship1[0].upper()) - ord('A')
     col1 = int(ship1[1:]) - 1
-    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
+    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
     battleGrid(displayGrid,row_list,col_list)    
     while True:        
         ship2_1stHalf = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
@@ -386,7 +386,7 @@ def game():
             
     row2 = ord(ship2_1stHalf[0].upper()) - ord('A')
     col2 = int(ship2_1stHalf[1:]) - 1   
-    displayGrid[row2][col2] = f"{Fore.RED}O{Fore.LIGHTCYAN_EX}"    
+    displayGrid[row2][col2] = f"{Fore.RED}O{Fore.BLUE}"    
     
     battleGrid(displayGrid,row_list,col_list)
     while True:        
@@ -413,9 +413,9 @@ def game():
     random_num4 = random.randint(0, col_list - 1)
 
     # Mark ship on shipPlaceGrid
-    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
-    displayGrid[row2][col2] = f"{Fore.RED}O{Fore.LIGHTCYAN_EX}"
-    displayGrid[row2half][col2half] = f"{Fore.RED}O{Fore.LIGHTCYAN_EX}"
+    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
+    displayGrid[row2][col2] = f"{Fore.RED}O{Fore.BLUE}"
+    displayGrid[row2half][col2half] = f"{Fore.RED}O{Fore.BLUE}"
     battleGrid(displayGrid,row_list,col_list)
     while True:
         if displayGrid[row2half][col2half] and displayGrid[row2-1][col2] == 'O':

@@ -60,7 +60,7 @@ def player_win():
 # Function to create and display the battle grid
 def battleGrid(displayGrid,row_list,col_list):
     # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
+    print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
         if col + 1 == 1:
             print(f"{col + 1}", end="  |")
@@ -73,7 +73,7 @@ def battleGrid(displayGrid,row_list,col_list):
 
     # Print grid rows
     for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
+        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
         for j in range(col_list):
             print(displayGrid[i][j], end="   | ")  # Print grid content
         print()
@@ -95,7 +95,7 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
     col = int(shot[1:]) - 1
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
@@ -108,7 +108,7 @@ def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     print(f"Computer shoots at {random_num1},{random_num2}")
 
     X = "x"
-    displayGrid[row][col] = f"{Fore.LIGHTMAGENTA_EX}{X}{Fore.LIGHTCYAN_EX}"
+    displayGrid[row][col] = f"{Fore.LIGHTMAGENTA_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
@@ -156,7 +156,7 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
 # Function to display the ship placement grid
 def shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list):
     # Print letters for columns header
-    print("", Fore.LIGHTCYAN_EX + "|", " ", end="")
+    print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
         if col + 1 == 1:
             print(f"{col + 1}", end="  |")
@@ -169,7 +169,7 @@ def shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list):
 
     # Print grid rows
     for i in range(row_list):
-        print(Fore.LIGHTCYAN_EX + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
+        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
         for j in range(col_list):
             print(shipPlaceDisplayGrid[i][j], end="   | ")  # Print grid content
         print()
@@ -209,12 +209,6 @@ def game():
     row_list = int_input("    How many rows (max 26): ", range(0, 27))
 
 
-
-    alphabet_lower = [] 
-    for i in range(row_list):
-            letter = chr(ord('a') + i)  # Get the ASCII character corresponding to 'a' + i
-            alphabet_lower.append(letter)
-
     # Initialize grids
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
     coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
@@ -244,7 +238,7 @@ def game():
     random_num4 = random.randint(0, col_list - 1)
 
     # Mark ship on shipPlaceGrid
-    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
+    shipPlaceDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
     shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list)
 
     while True:
