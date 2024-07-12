@@ -2,6 +2,7 @@ import random
 import os
 from colorama import init, Fore, Style
 import time
+import sys
 
 # Initialize Colorama for colored output
 init()
@@ -100,10 +101,10 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
 
 def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     random_num1 = random.randint(0, row_list - 1)
-    random_num2 = random.randint(0, col_list - 1)
-        
+    random_num2 = random.randint(0, col_list - 1)   
     row = random_num1
     col = random_num2
+
     print(f"Computer shoots at {random_num1},{random_num2}")
 
     X = "x"
@@ -178,16 +179,16 @@ def shipPlaceGrid(shipPlaceDisplayGrid,col_list,row_list):
 # Welcome message and grid size input
 def game():
     os.system('cls' if os.name == 'nt' else 'clear')
+
+
     print(Fore.WHITE +"Welcome to Battleship!")
-
-
     print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                         
     print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                            
     print(Fore.RED +   "  | |_) |  ,--. `| |-'`| |-'| | .---.  .--.   | |--.   __  _ .--.                                    =====| |.---------------------------. | |====")                            
     print(Fore.WHITE + "  |  __'. `'_\ : | |   | |  | |/ /__\\( (`\]  | .-. | [  |[ '/'`\ \                <--------------------'   .  .  .  .  .  .  .  .   '--------------/")                        
-    print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | | \__/ |                 __..._____--==/___]_|__|_____________________________[___\==--____,------' .7")                   
-    print(Fore.BLUE +  "|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.__/                 |                                                                     BB-61/")               
-    print(Fore.BLUE +  "                                                           [__|                    \_______________________________________________WWS______________________/")
+    print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | | \__/ |                 __..._____--==/___]_|__|__________________________________[___\==--____,------_' .7")                   
+    print(Fore.BLUE + f"|_______/ \'-;__/\__/  \__/[___]'.__.'[\__) )[___]|__][___]| ;.__/                 |                                                                            BB-61/")               
+    print(Fore.BLUE+ f"                                                           [__|                    \_______________________________________________USS:______________________________/")
 
 
     print(f"""{Fore.RED}Description:
