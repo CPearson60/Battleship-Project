@@ -16,6 +16,7 @@ init()
 #V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V 
 
 
+####################################################(Animations - Cameron)############################################################### 
 # shipAnimation_miss(), shipAnimation_hit(), computer_win(), player_win() are all just animations put into a function
 
 def shipAnimation_miss():
@@ -231,12 +232,14 @@ def player_win():
  
  
  
- 
-#int_input() function used to force quit game
+# Gianna
+#int_input() function accounts for edge cases and used to force quit game
 def int_input(prompt, selection):
     x = input(prompt)
     while not x.isnumeric() or not int(x) in selection:
+        # repeats prompt until satisfactory input
         if x.lower() == "quit":
+            # force quits if the user inputs "quit"
             print("The game has been forced quit. Have a nice day!")
             quit()
         else:
@@ -244,7 +247,7 @@ def int_input(prompt, selection):
     return int(x)
     
     
-    
+# Cameron
 # battleGrid() function to create and display the battle grid
 def battleGrid(displayGrid,row_list,col_list):
     # Print letters for columns header
@@ -271,7 +274,7 @@ def battleGrid(displayGrid,row_list,col_list):
         
         
     
-
+# Cameron
 # Function for player to shoot
 def player_shoot(displayGrid,coordGrid,col_list,row_list):
     while True:
@@ -297,6 +300,7 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
     coordGrid[row][col] = X
     return (displayGrid, coordGrid, X)
 
+# Gianna
 def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     random_num1 = random.randint(0, row_list - 1)
     random_num2 = random.randint(0, col_list - 1)
@@ -311,6 +315,7 @@ def computer_shoot(row_list,col_list,displayGrid,coordGrid):
     return (displayGrid, coordGrid, X)
 
 
+# Gianna
 # Function for computer to place ships
 def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
     
@@ -336,7 +341,7 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
         
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
+# Gianna
 # Function for manual ship placement
 def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
 
@@ -359,7 +364,7 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row_list,col_list):
 
     os.system('cls' if os.name == 'nt' else 'clear')
 
-
+# Cameron
 # Welcome message and grid size input
 def game():
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -387,18 +392,19 @@ def game():
     print(Fore.WHITE+"Create Your Grid:")
 
 
-# EDGE CASES!!
+
     col_list = int_input(Fore.BLUE+"    How many columns (max 26): ", range(0, 27))
 
     row_list = int_input("    How many rows (max 26): ", range(0, 27))
 
 
-
+    # Cameron
     alphabet_lower = [] 
     for i in range(row_list):
             letter = chr(ord('a') + i)  # Get the ASCII character corresponding to 'a' + i
             alphabet_lower.append(letter)
 
+    # Gianna
     # Initialize grids
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
     coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
@@ -429,8 +435,14 @@ def game():
     displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.LIGHTCYAN_EX}"
     battleGrid(displayGrid,row_list,col_list)
 
+    # Alternates turns between the computer and the player
     while True:
         computer_turn(displayGrid, coordGrid,row1,col1,row_list,col_list)
         user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list)
         
 game()
+
+# Entire functioning program: 206 lines
+# (Lines w/out animations)
+
+# Cameron - Current state of the game
