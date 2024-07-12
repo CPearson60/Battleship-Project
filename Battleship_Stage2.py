@@ -386,12 +386,6 @@ def game():
     row_list = int_input("    How many rows (max 26): ", range(0, 27))
 
 
-    # Cameron
-    alphabet_lower = [] 
-    for i in range(row_list):
-            letter = chr(ord('a') + i)  # Get the ASCII character corresponding to 'a' + i
-            alphabet_lower.append(letter)
-
     # Gianna
     # Initialize grids
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
