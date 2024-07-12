@@ -13,6 +13,9 @@ init()
 
 
 ####################################################(Animations)############################################################### 
+#V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V 
+
+
 # shipAnimation_miss(), shipAnimation_hit(), computer_win(), player_win() are all just animations put into a function
 
 def shipAnimation_miss():
@@ -222,6 +225,10 @@ def player_win():
  
  
  
+####################################################(Actual Code | Functions)###############################################################  
+
+#V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V  
+ 
  
  
  
@@ -278,7 +285,11 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
     # generate shot coordinates
+    # the fuction ord generates unicode for input
+    # converts into a numberic number
     row = ord(shot[0].upper()) - ord('A')
+    
+    #shot[1] = int value | number value
     col = int(shot[1:]) - 1
 
     X = "x"
@@ -355,8 +366,8 @@ def game():
     print(Fore.WHITE +"Welcome to Battleship!")
 
 
-    print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                         
-    print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                            
+    print(Fore.RED +   " ______           _     _   __                __        _                                                         ___#_#___|__")                                          
+    print(Fore.RED +   "|_   _ \         / |_  / |_[  |              [  |      (_)                                                    _  |____________|  _")                             
     print(Fore.RED +   "  | |_) |  ,--. `| |-'`| |-'| | .---.  .--.   | |--.   __  _ .--.                                    =====| |.---------------------------. | |====")                            
     print(Fore.WHITE + "  |  __'. `'_\ : | |   | |  | |/ /__\\( (`\]  | .-. | [  |[ '/'`\ \                <--------------------'   .  .  .  .  .  .  .  .   '--------------/")                        
     print(Fore.WHITE + " _| |__) |// | |,| |,  | |, | || \__., `'.'.  | | | |  | | | \__/ |                 __..._____--==/___]_|__|_____________________________[___\==--____,------' .7")                   
