@@ -349,6 +349,13 @@ def game():
     displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
     coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
+
+
+
+
+###############################################(Changes)#########################################################################
+
+
     # Display initial ship placement grid
     battleGrid(displayGrid,row_list,col_list)
 
