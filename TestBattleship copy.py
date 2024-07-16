@@ -743,7 +743,10 @@ def game():
 
         while True:
             satisfied = input(f"Is this where you want {ship1_name}? (Y/N) ").strip()
-            if satisfied.lower() == "y":
+            if satisfied.lower == "quit":
+                print("The game has been forced quit. Have a nice day!")
+                quit()
+            elif satisfied.lower() == "y":
                 break
             elif satisfied.lower() != "n":
                 print(f"Invalid input. Please enter Y or N: ")
