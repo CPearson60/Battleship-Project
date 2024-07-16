@@ -534,7 +534,7 @@ def battleGrid(displayGrid,row_list,col_list):
     
 # Cameron
 # Function for player to shoot
-def player_shoot(displayGrid,coordGrid,col_list,row_list):
+def player_shoot(displayGrid,coordGrid,row1, col1, row2, col2, col_list,row_list):
     while True:
         shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
         # .lower is case insinstive 
@@ -559,7 +559,13 @@ def player_shoot(displayGrid,coordGrid,col_list,row_list):
     X = "x"
     displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     coordGrid[row][col] = X
+    if coordGrid[row1][col1] == X:
+        displayGrid [row1][col1] = f"{Fore.LIGHTBLACK_EX}{X}{Fore.BLUE}"
+    elif coordGrid[row2][col2] == X:
+        displayGrid [row2][col2] = f"{Fore.LIGHTBLACK_EX}{X}{Fore.BLUE}"
     return (displayGrid, coordGrid, X)
+
+
 
 # Gianna
 def computer_shoot(row_list,col_list,displayGrid,coordGrid):
@@ -578,12 +584,12 @@ def computer_shoot(row_list,col_list,displayGrid,coordGrid):
 
 # Gianna
 # Function for computer to place ships
-def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
+def user_turn(displayGrid, coordGrid, row1, col1, row2, col2, random_num3, random_num4, row_list, col_list):
     
     print("User Objective:\nSink The Computer's Ship In Five Turns")
     
     battleGrid(displayGrid,row_list,col_list)
-    player_shoot(displayGrid,coordGrid,col_list,row_list)
+    player_shoot(displayGrid,coordGrid,row1, col1, row2, col2, col_list,row_list)
     if coordGrid[random_num3][random_num4] != "x":
         shipAnimation_miss()
 
@@ -612,9 +618,7 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row_list,col_list):
     battleGrid(displayGrid,row_list,col_list)
     computer_shoot(row_list,col_list,displayGrid,coordGrid)
 
-    # Check if player hits ship 1 or ship 2
-    if coordGrid[row1][col1] == "x":
-        print("Computer sunk your ship! Better luck next time.")
+    if coordGrid[row1][col1] == coordGrid[row2][col2] == "x":
         computer_win()
         t=10
         while t > 0:
@@ -623,17 +627,15 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row_list,col_list):
             t -= 1
         game()
         
-    if coordGrid[row2][col2] == "x":
-        print("Computer sunk your ship! Better luck next time.")
-        computer_win()
-        t=10
-        while t > 0:
-            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-            time.sleep(1)  # wait for 1 second
-            t -= 1
-        game()
-
     os.system('cls' if os.name == 'nt' else 'clear')
+
+    # Check if player hits ship 1 or ship 2
+    if coordGrid[row1][col1] == "x":
+        print("The computer hit your ship!")
+    elif coordGrid[row2][col2] == "x":
+        print("The computer hit your ship!")
+
+
 
 # Cameron
 # Welcome message and grid size input
@@ -735,8 +737,8 @@ def game():
 
     # Alternates turns between the computer and the player
     while True:
-        computer_turn(displayGrid, coordGrid,row1,col1,row2,col2,row_list,col_list)
-        user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list)
+        computer_turn(displayGrid, coordGrid, row1, col1, row2, col2, row_list, col_list)
+        user_turn(displayGrid, coordGrid, row1, col1, row2, col2, random_num3, random_num4, row_list, col_list)
         
 game()
 
