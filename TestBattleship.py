@@ -714,7 +714,7 @@ def game():
             break
     while True:      
         if orientation=="h":
-            if col2 < col_list-1:
+            if col1 < col_list-1:
                 row2=row1
                 col2=col1 + 1
                 break
