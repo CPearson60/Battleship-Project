@@ -707,15 +707,23 @@ def game():
 
 #///////////////////////////////////////////////////////////////////////////(Inputs For Usership Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     # Input for user ship 2x1
+    ships = []
+
+    ship1_name = input("Name your first ship: ")
+    ships.append(ship1_name)
+
+    # Input for user ship
     while True:
-        ship1 = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
-        if ship1.lower() == "quit":
-            print("The game has been forced quit. Have a nice day!")
-            quit()
-        elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
-            break
-        else:
-            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+        while True:
+            ship1 = input(f"Please enter the front coordinate for your ship, {ship1_name} (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
+            if ship1.lower() == "quit":
+                print("The game has been forced quit. Have a nice day!")
+                quit()
+            elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
+                break
+            else:
+                print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+        break
 
     
     # generates coords of the user ship 2x1
@@ -791,6 +799,18 @@ def game():
             random_num3 = random.randint(0, row_list - 1)
             random_num4 = random.randint(0, col_list - 1)
 
+    while True:
+        satisfied = input(f"Is this where you want {ship1_name}? (Y/N) ").strip()
+        if satisfied.lower() == "y":
+            break
+        elif satisfied.lower() != "n":
+            print(f"Invalid input. Please enter Y or N: ")
+        else:
+            displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+            coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+
+            break
+        
     # Mark ship on shipPlaceGrid
     
 
@@ -798,6 +818,7 @@ def game():
     while True:
         computer_turn(displayGrid, coordGrid, row1, col1, row2, random_num3, random_num4, col2, row_list, col_list)
         user_turn(displayGrid, coordGrid, row1, col1, row2, col2, random_num3, random_num4, row_list, col_list)
+
         
         
         
