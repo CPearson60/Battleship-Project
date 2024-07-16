@@ -604,7 +604,7 @@ def user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list):
 
 # Gianna
 # Function for manual ship placement
-def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row_list,col_list):
+def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row3,col3,ship1name,row_list,col_list):
 
     print("Computer Objective:\nSink The User's Ship In Five Turns")
     # printship(s)
@@ -614,7 +614,20 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row_list,col_list):
 
     # Check if player hits ship 1 or ship 2
     if coordGrid[row1][col1] == "x":
-        print("Computer sunk your ship! Better luck next time.")
+        print("Computer hit your ship!")
+
+    if coordGrid[row2][col2] == "x":
+        print("Computer hit your ship!")
+
+        game()
+    if coordGrid[row3][col3] == "x":
+        print("Computer sunk your ship!.")
+
+    if coordGrid[row1][col1] == "x" and coordGrid[row2][col2] == "x":
+        print (f"Compter Sunk {ship1name}")
+
+    if coordGrid[row1][col1] == "x" and coordGrid[row2][col2] == "x" and coordGrid[row3][col3]:
+        print("Computer sunk your ships!.")
         computer_win()
         t=10
         while t > 0:
@@ -623,16 +636,6 @@ def computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row_list,col_list):
             t -= 1
         game()
         
-    if coordGrid[row2][col2] == "x":
-        print("Computer sunk your ship! Better luck next time.")
-        computer_win()
-        t=10
-        while t > 0:
-            print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-            time.sleep(1)  # wait for 1 second
-            t -= 1
-        game()
-
     os.system('cls' if os.name == 'nt' else 'clear')
 
 # Cameron
@@ -724,18 +727,47 @@ def game():
                 break
         else:
             break
+    
     # Initialize ship positions for computer randomly
     random_num3 = random.randint(0, row_list - 1)
     random_num4 = random.randint(0, col_list - 1)
+    while True:
+        if random_num3 != row1 and random_num4 != col1:
+            break
+        else:
+            random_num3 = random.randint(0, row_list - 1)
+            random_num4 = random.randint(0, col_list - 1)
+
 
     # Mark ship on shipPlaceGrid
     
     displayGrid[row2][col2] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
     battleGrid(displayGrid,row_list,col_list)
+    
+    ship1name = input("Name Your First Ship(2 x 1): ")
+    
+    
+    
+    while True:
+        ship2 = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
+        if ship2.lower() == "quit":
+            print("The game has been forced quit. Have a nice day!")
+            quit()
+        elif len(ship2) >= 2 and ship2[0].upper() in [chr(65 + i) for i in range(row_list)] and ship2[1:].isdigit() and int(ship2[1:]) <= col_list:
+            break
+        else:
+            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+    
+    row3 = ord(ship2[0].upper()) - ord('A')
+    col3 = int(ship2[1:]) - 1
+    displayGrid[row3][col3] = f"{Fore.YELLOW}O{Fore.BLUE}"
+    battleGrid(displayGrid,row_list,col_list)
+   
+        
 
     # Alternates turns between the computer and the player
     while True:
-        computer_turn(displayGrid, coordGrid,row1,col1,row2,col2,row_list,col_list)
+        computer_turn(displayGrid,coordGrid,row1,col1,row2,col2,row3,col3,ship1name,row_list,col_list)
         user_turn(displayGrid,coordGrid,random_num3,random_num4,row_list,col_list)
         
 game()
