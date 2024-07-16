@@ -682,63 +682,86 @@ def game():
     # Display initial ship placement grid
     battleGrid(displayGrid,row_list,col_list)
 
+    ships = []
+
+    ship1_name = input("Name your first ship: ")
+    ships.append(ship1_name)
+
     # Input for user ship
     while True:
-        ship1 = input(f"Please enter the coordinate for your ship (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
-        if ship1.lower() == "quit":
-            print("The game has been forced quit. Have a nice day!")
-            quit()
-        elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
-            break
-        else:
-            print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
+        while True:
+            ship1 = input(f"Please enter the front coordinate for your ship, {ship1_name} (A-{chr(65 + row_list - 1)},1-{col_list}): ").strip().replace(",", "")
+            if ship1.lower() == "quit":
+                print("The game has been forced quit. Have a nice day!")
+                quit()
+            elif len(ship1) >= 2 and ship1[0].upper() in [chr(65 + i) for i in range(row_list)] and ship1[1:].isdigit() and int(ship1[1:]) <= col_list:
+                break
+            else:
+                print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
 
-    
-    # generates coords of the user ship
-    row1 = ord(ship1[0].upper()) - ord('A')
-    col1 = int(ship1[1:]) - 1
-    displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-    battleGrid(displayGrid,row_list,col_list)
-    orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
-   
-    while True:
-        if orientation=="v":
         
-            if row1 < row_list-1:
-                row2 = row1 + 1
-                col2 = col1 
-                break
-            else:
-                row2 = row1 - 1
-                col2 = col1
-                break
-        else:
-            break
-    while True:      
-        if orientation=="h":
-            if col1 < col_list-1:
-                row2=row1
-                col2=col1 + 1
-                break
-            else:
-                row2=row1
-                col2=col1 - 1
-                break
-        else:
-            break
-    # Initialize ship positions for computer randomly
-    random_num3 = random.randint(0, row_list - 1)
-    random_num4 = random.randint(0, col_list - 1)
-
-    # Mark ship on shipPlaceGrid
+        # generates coords of the user ship
+        row1 = ord(ship1[0].upper()) - ord('A')
+        col1 = int(ship1[1:]) - 1
+        displayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
+        battleGrid(displayGrid,row_list,col_list)
+        orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
     
-    displayGrid[row2][col2] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-    battleGrid(displayGrid,row_list,col_list)
+        while True:
+            if orientation=="v":
+            
+                if row1 < row_list-1:
+                    row2 = row1 + 1
+                    col2 = col1 
+                    break
+                else:
+                    row2 = row1 - 1
+                    col2 = col1
+                    break
+            else:
+                break
+        while True:      
+            if orientation=="h":
+                if col1 < col_list-1:
+                    row2=row1
+                    col2=col1 + 1
+                    break
+                else:
+                    row2=row1
+                    col2=col1 - 1
+                    break
+            else:
+                break
+        # Initialize ship positions for computer randomly
+        random_num3 = random.randint(0, row_list - 1)
+        random_num4 = random.randint(0, col_list - 1)
+
+        # Mark ship on shipPlaceGrid
+        
+        displayGrid[row2][col2] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
+        battleGrid(displayGrid,row_list,col_list)
+
+        while True:
+            satisfied = input(f"Is this where you want {ship1_name}? (Y/N) ").strip()
+            if satisfied.lower() == "y":
+                break
+            elif satisfied.lower() != "n":
+                print(f"Invalid input. Please enter Y or N: ")
+            else:
+                displayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+                coordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+
+                break
+            
+
+        if satisfied.lower() == "y":
+            break
 
     # Alternates turns between the computer and the player
     while True:
         computer_turn(displayGrid, coordGrid, row1, col1, row2, col2, row_list, col_list)
         user_turn(displayGrid, coordGrid, row1, col1, row2, col2, random_num3, random_num4, row_list, col_list)
+
         
 game()
 
