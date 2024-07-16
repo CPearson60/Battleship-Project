@@ -699,19 +699,31 @@ def game():
     battleGrid(displayGrid,row_list,col_list)
     orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
    
-    
-    if orientation=="v":
-        if row1 < col_list:
-            row2 = row1 + 1
-            col2 = col1 
-        else:
-            row2 = row1 - 1
-            col2 = col1 
+    while True:
+        if orientation=="v":
         
-    if orientation=="h":
-        row2=row1
-        col2=col1 + 1
-
+            if row1 < row_list-1:
+                row2 = row1 + 1
+                col2 = col1 
+                break
+            else:
+                row2 = row1 - 1
+                col2 = col1
+                break
+        else:
+            break
+    while True:      
+        if orientation=="h":
+            if col2 < col_list-1:
+                row2=row1
+                col2=col1 + 1
+                break
+            else:
+                row2=row1
+                col2=col1 - 1
+                break
+        else:
+            break
     # Initialize ship positions for computer randomly
     random_num3 = random.randint(0, row_list - 1)
     random_num4 = random.randint(0, col_list - 1)
