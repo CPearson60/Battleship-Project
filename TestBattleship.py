@@ -780,7 +780,7 @@ def game():
         else:
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             
-    # generates coords of the user ship 2x1
+    # generates coords of the user ship 1x1
     row3 = ord(ship2[0].upper()) - ord('A')
     col3 = int(ship2[1:]) - 1
     displayGrid[row3][col3] = f"{Fore.RED}O{Fore.BLUE}"
