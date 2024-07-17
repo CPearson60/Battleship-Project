@@ -653,8 +653,9 @@ def computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, ro
     print("Computer Objective:\nSink The User's Ship In Five Turns")
     # printship(s)
 
-    playerBattleGrid(playerDisplayGrid, row_list, col_list)
+    # playerBattleGrid(playerDisplayGrid, row_list, col_list)
     computer_shoot(playerDisplayGrid, playerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, row_list, col_list, random_num3, random_num4)
+    playerBattleGrid(playerDisplayGrid, row_list, col_list)
 
     if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
         print("The computer sunk both your ships! Better luck next time.")
