@@ -664,9 +664,11 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
         print(f"The computer sunk your ship, {ship2_name}!")
     else:
         print("The computer missed!")
-    t = 3
-    print(f"{Fore.WHITE}User turn in{t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-    time.sleep(1)  # wait for 1 second
+    t=5
+    while t > 0:
+        print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+        time.sleep(1)  # wait for 1 second
+        t -= 1
 
 
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -811,7 +813,7 @@ def game():
                     break
 
         if satisfied.lower() == "y":
-                    break
+            break
 
     
 
@@ -891,7 +893,8 @@ def game():
                     break
 
         if satisfied.lower() == "y":
-                    break
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
     
     
 #///////////////////////////////////////////////////////////////////////////(Inputs For Computer Ship Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#   
