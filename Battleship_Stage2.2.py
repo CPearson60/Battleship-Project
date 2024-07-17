@@ -685,9 +685,11 @@ def computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, ro
         print(f"The computer sunk your ship, {ship2_name}!")
     else:
         print("The computer missed!")
-    t = 3
-    print(f"{Fore.WHITE}User turn in{t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-    time.sleep(1)  # wait for 1 second
+    t=5
+    while t > 0:
+        print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+        time.sleep(1)  # wait for 1 second
+        t -= 1
 
 
     os.system('cls' if os.name == 'nt' else 'clear')
