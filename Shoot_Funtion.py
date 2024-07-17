@@ -33,4 +33,7 @@ def Shoot_Guess():
     #shot[1] = int value | number value
     col = int(shot[1:]) - 1
 
-player_shoot()
+    X = "x"
+    displayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+    coordGrid[row][col] = X
+    return (displayGrid, coordGrid, X)
