@@ -525,7 +525,7 @@ def computerBattleGrid(computerDisplayGrid, row_list, col_list):
         print()
         
 
-#////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtions)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
+#////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
 def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn):
     while True:
@@ -556,25 +556,20 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
     computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
     computerCoordGrid[row][col] = X
     return (computerDisplayGrid, computerCoordGrid, X)
-#////////////////////////////////////////////////(User Turn and Computer Turn Functions)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
+#//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
 # Function for computer to place ships
 
 def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list):
-    print("Objective:\nSink The Computer's Ship")
     if turn == 0:
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        print("Computer objective:\nSink The Player's Ships")
         turn=0
         Shoot_Guess(playerDisplayGrid, playerCoordGrid,row_list, col_list,turn)
+        playerBattleGrid(playerDisplayGrid, row_list, col_list)
 
         if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
             print("The computer sunk both your ships! Better luck next time.")
             computer_win()
-        t=5
-        while t > 0:
-            print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-            time.sleep(1)  # wait for 1 second
-            t -= 1
             
     
         # Check if player hits ship 1 or ship 2
@@ -594,10 +589,11 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
             print(f"The computer sunk your ship, {ship2_name}!")
         else:
             print("The computer missed!")
-        t = 3
-        print(f"{Fore.WHITE}User turn in{t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-        time.sleep(1)  # wait for 1 second
-
+        t=5
+        while t > 0:
+            print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+            time.sleep(1)  # wait for 1 second
+            t -= 1
 
         os.system('cls' if os.name == 'nt' else 'clear')
     
@@ -623,29 +619,6 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
             
             os.system('cls' if os.name == 'nt' else 'clear')
 
-
-    # Check if player hits ship 1 or ship 2
-    print("Move Log:")
-    if playerCoordGrid[row1][col1] == "x":
-        print(f"The computer hit your ship, {ship1_name}!")
-    if playerCoordGrid[row2][col2] == "x":
-        print(f"The computer hit your ship, {ship1_name}!")
-    if playerCoordGrid[row3][col3] == "x":
-        print(f"The computer hit your ship, {ship2_name}!")
-    if playerCoordGrid[row4][col4] == "x":
-        print(f"The computer hit your ship, {ship2_name}!")
-
-    if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == "x":
-        print(f"The computer sunk your ship, {ship1_name}!")
-    if playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
-        print(f"The computer sunk your ship, {ship2_name}!")
-    else:
-        print("The computer missed!")
-    t=5
-    while t > 0:
-        print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-        time.sleep(1)  # wait for 1 second
-        t -= 1
 
 
     os.system('cls' if os.name == 'nt' else 'clear')
