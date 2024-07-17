@@ -622,7 +622,7 @@ def computer_shoot(playerDisplayGrid, playerCoordGrid, row1, col1, row2, col2, r
 #////////////////////////////////////////////////(User Turn and Computer Turn Functions)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
 # Function for computer to place ships
-def player_turn(computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list):
+def player_turn(computerDisplayGrid, computerCoordGrid, random_num3, random_num4, row_list, col_list):
     
     print("User Objective:\nSink The Computer's Ship")
     
@@ -670,7 +670,6 @@ def computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, ro
 
 
     # Check if player hits ship 1 or ship 2
-    print("Move Log:")
     if playerCoordGrid[row1][col1] == "x":
         print(f"The computer hit your ship, {ship1_name}!")
     if playerCoordGrid[row2][col2] == "x":
@@ -933,7 +932,7 @@ def game():
     # Alternates turns between the computer and the player
     while True:
         computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)
-        player_turn(computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)
+        player_turn(computerDisplayGrid, computerCoordGrid, random_num3, random_num4, row_list, col_list)
 
         
         
