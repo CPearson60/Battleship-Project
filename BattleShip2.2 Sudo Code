@@ -1,0 +1,62 @@
+Data storage:
+
+Utilize a 10x10 grid
+
+However, keep the board being declared dynamically
+
+The computer and player will each have their own board (ONLY list of list) and then you can choose to use either:
+
+1 list for the computer and 1 list for the player to keep track of the names/ship coordinates
+
+1 dictionary for the player and 1 dictionary for the computer. 
+
+Your data will reside in main, meaning that you will have to pass your data from main, to a function, then back to main. 
+
+Algorithms:
+
+You will have 1 function to include logic for the entire logic of each function. 
+
+I.e. if you have a computer guess, and a player guess, it now needs to be one function that handles all of the guessing. 
+
+So it should be one print function, one guessing function, one storage function etc. 
+
+You shouldn’t have a function call another function calling another function. Think about a plan on how you can call one function, that doesn’t need other functions. 
+
+Use ASCII to think outside the box to convert the letter to an index to reference the column. 
+
+Git: 
+
+Each partner should be pushing their own code to github.
+If you aren't pushing your code, then I will assume you contributed nothing. 
+Commit messages should reference the user stories that you are completing. 
+Which also proves that you are contributing the code that you and your partner agree that is your responsibility. 
+Commits need to come from a branch and be merged into main. 
+You should create a branch with the naming convention UserStory - Name so that when it gets merged into main its easy to see what is being added. 
+
+
+########################################################################################################################################
+
+Need To Have 
+
+
+Need a centrialized Board Function: Use This To Create Board For Player and Computer
+
+
+#Dict For Computer & Player Shipname and Shipcoords:
+ComputerInfo = {} | Shipname:Comp Coord
+PlayerInfo = {}   | Shipname:Player Coord 
+
+
+
+        
+
+
+
+
+
+
+
+
+
+main()
+#All Codes
