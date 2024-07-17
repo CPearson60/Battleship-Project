@@ -1,0 +1,2 @@
+def shoot_guess():
+    
