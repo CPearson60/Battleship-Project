@@ -582,7 +582,7 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
 #////////////////////////////////////////////////(User Turn and Computer Turn Functions)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
 # Function for computer to place ships
-def player_turn(computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list):
+def player_turn(computerDisplayGrid, computerCoordGrid, random_num3, random_num4, row_list, col_list):
     
     print("User Objective:\nSink The Computer's Ship")
     
@@ -614,9 +614,9 @@ def computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, ro
     print("Computer Objective:\nSink The User's Ship In Five Turns")
     # printship(s)
 
-    playerBattleGrid(playerDisplayGrid, row_list, col_list)
     turn=0
     Shoot_Guess(playerDisplayGrid, playerCoordGrid,row_list, col_list,turn)
+    playerBattleGrid(playerDisplayGrid, row_list, col_list)
 
     if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
         print("The computer sunk both your ships! Better luck next time.")
@@ -647,9 +647,11 @@ def computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, ro
         print(f"The computer sunk your ship, {ship2_name}!")
     else:
         print("The computer missed!")
-    t = 3
-    print(f"{Fore.WHITE}User turn in{t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-    time.sleep(1)  # wait for 1 second
+    t=5
+    while t > 0:
+        print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+        time.sleep(1)  # wait for 1 second
+        t -= 1
 
 
     os.system('cls' if os.name == 'nt' else 'clear')
@@ -794,6 +796,7 @@ def game():
                     break
 
         if satisfied.lower() == "y":
+                    os.system('cls' if os.name == 'nt' else 'clear')
                     break
 
     
@@ -892,7 +895,7 @@ def game():
     # Alternates turns between the computer and the player
     while True:
         computer_turn(playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)
-        player_turn(computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)
+        player_turn(computerDisplayGrid, computerCoordGrid, random_num3, random_num4, row_list, col_list)
 
         
         

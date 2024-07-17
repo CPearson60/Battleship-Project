@@ -659,14 +659,8 @@ def computer_turn(displayGrid, coordGrid, ship1_name, ship2_name, row1, col1, ro
         print(f"The computer sunk your ship, {ship1_name}!")
     if coordGrid[row3][col3] == coordGrid[row4][col4] == "x":
         print(f"The computer sunk your ship, {ship2_name}!")
-    else:
-        print("The computer missed!")
 
-    t=5
-    while t > 0:
-        print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
-        time.sleep(1)  # wait for 1 second
-        t -= 1
+
 
 
 
