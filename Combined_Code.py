@@ -796,8 +796,7 @@ def game():
                     break
 
         if satisfied.lower() == "y":
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    break
+            break
 
     
 
@@ -877,7 +876,8 @@ def game():
                     break
 
         if satisfied.lower() == "y":
-                    break
+            os.system('cls' if os.name == 'nt' else 'clear')
+            break
     
     
 #///////////////////////////////////////////////////////////////////////////(Inputs For Computer Ship Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#   
