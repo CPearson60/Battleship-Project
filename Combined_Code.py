@@ -6,12 +6,6 @@ import time
 # Initialize Colorama for colored output
 init()
 
-
-
-
-
-
-
 ####################################################(Animations)############################################################### 
 #V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V V 
 
@@ -458,23 +452,6 @@ def player_win():
 
 
 ####################################################(End Of Animations)############################################################### 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
  
 ####################################################(Actual Code | Functions)###############################################################  
 #VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 
