@@ -560,10 +560,12 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
 # Gianna
 # Function for computer to place ships
 
-def Turn_system(playerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list):
+def Turn_system(playerShips, computerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num1, random_num2, row_list, col_list):
     if turn == 0:
+        
+        # prints list of ships and coords for testing
 
-        for x, y in playerShips.items():
+        for x, y in computerShips.items():
             print(f"- {x}, {y}")
 
         print("Computer objective:\nSink The Player's Ships")
@@ -610,11 +612,11 @@ def Turn_system(playerShips, turn, playerDisplayGrid, playerCoordGrid, playerShi
         computerBattleGrid(computerDisplayGrid, row_list, col_list)
         turn = 1
         Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
-        if computerCoordGrid[random_num3][random_num4] != "x":
+        if computerCoordGrid[random_num1][random_num2] != "x":
             shipAnimation_miss()
 
         # Check if player hits ship 1 or ship 2
-        if computerCoordGrid[random_num3][random_num4] == "x":
+        if computerCoordGrid[random_num1][random_num2] == "x":
             shipAnimation_hit()
             print("You sunk the Computer's ship! You WIN!")
             player_win()
@@ -856,22 +858,29 @@ def game():
     
 #///////////////////////////////////////////////////////////////////////////(Inputs For Computer Ship Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#   
     # Initialize ship positions for computer randomly
-    random_num3 = random.randint(0, row_list - 1)
-    random_num4 = random.randint(0, col_list - 1)
-    while True:
-        if random_num3 != row1 and random_num4 != row2 and random_num4 != col1 and random_num4 != col2:
-            break
-        else:
-            random_num3 = random.randint(0, row_list - 1)
-            random_num4 = random.randint(0, col_list - 1)
+
+    computerShips = {}
+
+    computerShip1_name = input("Name the computer's first ship: ")
+    random_num1 = random.randint(0, row_list - 1)
+    random_num2 = random.randint(0, col_list - 1)
+
+    computerShips.update({computerShip1_name: [f"First Coord: ({random_num1}, {random_num2})"]})
+
+    # while True:
+    #     if random_num1 != row1 and random_num2 != row2 and random_num2 != col1 and random_num2 != col2:
+    #         break
+    #     else:
+    #         random_num1 = random.randint(0, row_list - 1)
+    #         random_num2 = random.randint(0, col_list - 1)
     
 
     # Alternates turns between the computer and the player
     while True:
         turn=0
-        Turn_system(playerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)  
+        Turn_system(playerShips, computerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num1, random_num2, row_list, col_list)  
         turn=1
-        Turn_system(playerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)  
+        Turn_system(playerShips, computerShips, turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num1, random_num2, row_list, col_list)  
         
         
         
