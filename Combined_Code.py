@@ -410,45 +410,45 @@ def shipAnimation_hit():
     
 
 ####################################################(Animations)############################################################### 
-def computer_win():
+def win_animation(turn):
 
+    if turn == 0:
+        print(f"   ___                            _              __    __ _           ")
+        print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
+        print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
+        print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
+        print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
+        print(f"                     |_|                                              ")
 
-    print(f"   ___                            _              __    __ _           ")
-    print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
-    print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
-    print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
-    print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
-    print(f"                     |_|                                              ")
+        print(Fore.YELLOW+"                            .-=========-.")
+        print(Fore.YELLOW+"                            \'-=======-'/")
+        print(Fore.YELLOW+"                            _|   .=.   |_")
+        print(Fore.YELLOW+"                           ((|  {{1}}  |))")
+        print(Fore.YELLOW+"                            \|   /|\   |/")
+        print(Fore.YELLOW+"                             \__ '`' __/")
+        print(Fore.YELLOW+"                               _`) (`_" )
+        print(Fore.YELLOW+"                             _/_______\_")
+        print(Fore.YELLOW+"                            /___________\ \n")
 
-    print(Fore.YELLOW+"                            .-=========-.")
-    print(Fore.YELLOW+"                            \'-=======-'/")
-    print(Fore.YELLOW+"                            _|   .=.   |_")
-    print(Fore.YELLOW+"                           ((|  {{1}}  |))")
-    print(Fore.YELLOW+"                            \|   /|\   |/")
-    print(Fore.YELLOW+"                             \__ '`' __/")
-    print(Fore.YELLOW+"                               _`) (`_" )
-    print(Fore.YELLOW+"                             _/_______\_")
-    print(Fore.YELLOW+"                            /___________\ \n")
+    else:
+        print("   ___ _                          __    __ _           ")
+        print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
+        print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
+        print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
+        print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
+        print("               |___/                                  ")
+        
+        
+        print(Fore.YELLOW+"                      .-=========-.")
+        print(Fore.YELLOW+"                      \'-=======-'/")
+        print(Fore.YELLOW+"                       |   .=.   |_")
+        print(Fore.YELLOW+"                     ((|  {{1}}  |))")
+        print(Fore.YELLOW+"                      \|   /|\   |/")
+        print(Fore.YELLOW+"                       \__ '`' __/")
+        print(Fore.YELLOW+"                         _`) (`_" )
+        print(Fore.YELLOW+"                       _/_______\_")
+        print(Fore.YELLOW+"                      /___________\ \n")
 
-####################################################(Animations)###############################################################  
-def player_win():
-    print("   ___ _                          __    __ _           ")
-    print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
-    print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
-    print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
-    print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
-    print("               |___/                                  ")
-    
-    
-    print(Fore.YELLOW+"                      .-=========-.")
-    print(Fore.YELLOW+"                      \'-=======-'/")
-    print(Fore.YELLOW+"                       |   .=.   |_")
-    print(Fore.YELLOW+"                     ((|  {{1}}  |))")
-    print(Fore.YELLOW+"                      \|   /|\   |/")
-    print(Fore.YELLOW+"                       \__ '`' __/")
-    print(Fore.YELLOW+"                         _`) (`_" )
-    print(Fore.YELLOW+"                       _/_______\_")
-    print(Fore.YELLOW+"                      /___________\ \n")
 
 
 ####################################################(End Of Animations)############################################################### 
@@ -548,7 +548,7 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
 
         if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
             print("The computer sunk both your ships! Better luck next time.")
-            computer_win()
+            win_animation(turn)
             
     
         # Check if player hits ship 1 or ship 2
@@ -586,7 +586,7 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
         if computerCoordGrid[random_num3][random_num4] == "x":
             shipAnimation_hit()
             print("You sunk the Computer's ship! You WIN!")
-            player_win()
+            win_animation(turn)
             t=10
             while t > 0:
                 print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
@@ -640,7 +640,7 @@ def game():
     print(Fore.WHITE+"Create Your Grid:")
     col_list = 10
     row_list = 10
-    turn = 1
+    turn = 0
     # Gianna
     # Initialize grids
     computerDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
