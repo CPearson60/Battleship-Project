@@ -627,16 +627,6 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
 
 
 
-
-
-
-
-
-
-
-
-
-
 ######################################################################(Game Logic *Funtion That Runs The Game*)######################################################################################
 #vvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvvv#
 
@@ -685,7 +675,7 @@ def game():
     playerBattleGrid(playerDisplayGrid, row_list, col_list)
 
 
-#///////////////////////////////////////////////////////////////////////////(Inputs For Usership Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
+#////////////////////////////////////////////////////////////////////////////////////(Inputs For Usership Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     # Input for player ship 2x1
     ships = []
 
@@ -865,8 +855,6 @@ def game():
         Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)  
         turn=1
         Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list)  
-        
-        
         
         
         
