@@ -410,45 +410,45 @@ def shipAnimation_hit():
     
 
 ####################################################(Animations)############################################################### 
-def computer_win():
+def win_animation(turn):
 
+    if turn == 0:
+        print(f"   ___                            _              __    __ _           ")
+        print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
+        print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
+        print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
+        print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
+        print(f"                     |_|                                              ")
 
-    print(f"   ___                            _              __    __ _           ")
-    print(f"  / __\___  _ __ ___  _ __  _   _| |_ ___ _ __  / / /\ \ (_)_ __  ___ ")
-    print(f" / /  / _ \| '_ ` _ \| '_ \| | | | __/ _ \ '__| \ \/  \/ / | '_ \/ __|")
-    print(f"/ /__| (_) | | | | | | |_) | |_| | ||  __/ |     \  /\  /| | | | \__ \ ") 
-    print(f"\____/\___/|_| |_| |_| .__/ \__,_|\__\___|_|      \/  \/ |_|_| |_|___/")
-    print(f"                     |_|                                              ")
+        print(Fore.YELLOW+"                            .-=========-.")
+        print(Fore.YELLOW+"                            \'-=======-'/")
+        print(Fore.YELLOW+"                            _|   .=.   |_")
+        print(Fore.YELLOW+"                           ((|  {{1}}  |))")
+        print(Fore.YELLOW+"                            \|   /|\   |/")
+        print(Fore.YELLOW+"                             \__ '`' __/")
+        print(Fore.YELLOW+"                               _`) (`_" )
+        print(Fore.YELLOW+"                             _/_______\_")
+        print(Fore.YELLOW+"                            /___________\ \n")
 
-    print(Fore.YELLOW+"                            .-=========-.")
-    print(Fore.YELLOW+"                            \'-=======-'/")
-    print(Fore.YELLOW+"                            _|   .=.   |_")
-    print(Fore.YELLOW+"                           ((|  {{1}}  |))")
-    print(Fore.YELLOW+"                            \|   /|\   |/")
-    print(Fore.YELLOW+"                             \__ '`' __/")
-    print(Fore.YELLOW+"                               _`) (`_" )
-    print(Fore.YELLOW+"                             _/_______\_")
-    print(Fore.YELLOW+"                            /___________\ \n")
+    else:
+        print("   ___ _                          __    __ _           ")
+        print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
+        print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
+        print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
+        print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
+        print("               |___/                                  ")
+        
+        
+        print(Fore.YELLOW+"                      .-=========-.")
+        print(Fore.YELLOW+"                      \'-=======-'/")
+        print(Fore.YELLOW+"                       |   .=.   |_")
+        print(Fore.YELLOW+"                     ((|  {{1}}  |))")
+        print(Fore.YELLOW+"                      \|   /|\   |/")
+        print(Fore.YELLOW+"                       \__ '`' __/")
+        print(Fore.YELLOW+"                         _`) (`_" )
+        print(Fore.YELLOW+"                       _/_______\_")
+        print(Fore.YELLOW+"                      /___________\ \n")
 
-####################################################(Animations)###############################################################  
-def player_win():
-    print("   ___ _                          __    __ _           ")
-    print("  / _ \ | __ _ _   _  ___ _ __   / / /\ \ (_)_ __  ___ ")
-    print(" / /_)/ |/ _` | | | |/ _ \ '__|  \ \/  \/ / | '_ \/ __|")
-    print("/ ___/| | (_| | |_| |  __/ |      \  /\  /| | | | \__ \ ")
-    print("\/    |_|\__,_|\__, |\___|_|       \/  \/ |_|_| |_|___/")
-    print("               |___/                                  ")
-    
-    
-    print(Fore.YELLOW+"                      .-=========-.")
-    print(Fore.YELLOW+"                      \'-=======-'/")
-    print(Fore.YELLOW+"                       |   .=.   |_")
-    print(Fore.YELLOW+"                     ((|  {{1}}  |))")
-    print(Fore.YELLOW+"                      \|   /|\   |/")
-    print(Fore.YELLOW+"                       \__ '`' __/")
-    print(Fore.YELLOW+"                         _`) (`_" )
-    print(Fore.YELLOW+"                       _/_______\_")
-    print(Fore.YELLOW+"                      /___________\ \n")
 
 
 ####################################################(End Of Animations)############################################################### 
@@ -475,7 +475,7 @@ def int_input(prompt, selection):
 
 # Cameron
 # battleGrid() function to create and display the battle grid
-def playerBattleGrid(playerDisplayGrid, row_list, col_list):
+def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list):
     # Print nums for columns header
     print("", Fore.BLUE + "|", " ", end="")
     for col in range(col_list):
@@ -489,40 +489,20 @@ def playerBattleGrid(playerDisplayGrid, row_list, col_list):
             else:
                 print(f" {col + 1}", end="  |")
     print("")
-
     # Print grid rows
     # Chr() function returns a string representing a character whose Unicode code point is the integer specified.
     # Chr(65) = Capital(A)
     for i in range(row_list):
         print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
-        for j in range(col_list):
-            print(playerDisplayGrid[i][j], end="   | ")  # Print grid content
-        print()
-
-# battleGrid() function to create and display the battle grid
-def computerBattleGrid(computerDisplayGrid, row_list, col_list):
-    # Print nums for columns header
-    print("", Fore.BLUE + "|", " ", end="")
-    for col in range(col_list):
-        if col + 1 == 1:
-            print(f"{col + 1}", end="  |")
+        if turn == 1:
+            for j in range(col_list):
+                print(computerDisplayGrid[i][j], end="   | ")  # Print grid content
+            print()
         else:
-            #adds space for formating
-            if col < 9:
-                print(f"  {col + 1}", end="  |")
-            # does not inlcude space to format double digits better
-            else:
-                print(f" {col + 1}", end="  |")
-    print("")
-
-    # Print grid rows
-    # Chr() function returns a string representing a character whose Unicode code point is the integer specified.
-    # Chr(65) = Capital(A)
-    for i in range(row_list):
-        print(Fore.BLUE + f"{chr(65 + i)}|", end=" ")  # Print row letters (A, B, C, ...)
-        for j in range(col_list):
-            print(computerDisplayGrid[i][j], end="   | ")  # Print grid content
-        print()
+            for j in range(col_list):
+                print(playerDisplayGrid[i][j], end="   | ")  # Print grid content
+            print()
+            
         
 
 #////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
@@ -563,13 +543,12 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
 def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num3, random_num4, row_list, col_list):
     if turn == 0:
         print("Computer objective:\nSink The Player's Ships")
-        turn=0
         Shoot_Guess(playerDisplayGrid, playerCoordGrid,row_list, col_list,turn)
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
         if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
             print("The computer sunk both your ships! Better luck next time.")
-            computer_win()
+            win_animation(turn)
             
     
         # Check if player hits ship 1 or ship 2
@@ -598,8 +577,7 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
         os.system('cls' if os.name == 'nt' else 'clear')
     
     else:
-        computerBattleGrid(computerDisplayGrid, row_list, col_list)
-        turn = 1
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
         if computerCoordGrid[random_num3][random_num4] != "x":
             shipAnimation_miss()
@@ -608,7 +586,7 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, ship1_name, ship2_name,
         if computerCoordGrid[random_num3][random_num4] == "x":
             shipAnimation_hit()
             print("You sunk the Computer's ship! You WIN!")
-            player_win()
+            win_animation(turn)
             t=10
             while t > 0:
                 print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
@@ -662,7 +640,7 @@ def game():
     print(Fore.WHITE+"Create Your Grid:")
     col_list = 10
     row_list = 10
-
+    turn = 0
     # Gianna
     # Initialize grids
     computerDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
@@ -672,7 +650,7 @@ def game():
     playerCoordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
     # Display initial ship placement grid
-    playerBattleGrid(playerDisplayGrid, row_list, col_list)
+    BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
 
 #////////////////////////////////////////////////////////////////////////////////////(Inputs For Usership Placement)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
@@ -701,14 +679,14 @@ def game():
         row1 = ord(ship1[0].upper()) - ord('A')
         col1 = int(ship1[1:]) - 1
         playerDisplayGrid[row1][col1] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         
         # asks and defines orientation for 2x1 ship
         orientation = input(f"Choose your ship orientation for {ship1_name} (v for vertical, h for horizontal)").strip()
         while True:
             if orientation != "h" and orientation != "v" :
                 os.system('cls' if os.name == 'nt' else 'clear')
-                playerBattleGrid(playerDisplayGrid, row_list, col_list)
+                BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
             else:
                 break
@@ -738,7 +716,7 @@ def game():
                 break
         
         playerDisplayGrid[row2][col2] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
         while True:
                 satisfied = input(f"Is this where you want {ship1_name}? (Y/N) ").strip()
@@ -779,14 +757,14 @@ def game():
         row3 = ord(ship2[0].upper()) - ord('A')
         col3 = int(ship2[1:]) - 1
         playerDisplayGrid[row3][col3] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         
         # asks and defines orientation for 2x1 ship
         orientation = input(f"Choose your ship orientation for {ship2_name} (v for vertical, h for horizontal)").strip()
         while True:
             if orientation != "h" and orientation != "v" :
                 os.system('cls' if os.name == 'nt' else 'clear')
-                playerBattleGrid(playerDisplayGrid, row_list, col_list)
+                BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
             else:
                 break
@@ -816,7 +794,7 @@ def game():
                 break
         
         playerDisplayGrid[row4][col4] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
-        playerBattleGrid(playerDisplayGrid, row_list, col_list)
+        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
         while True:
                 satisfied = input(f"Is this where you want {ship2_name}? (Y/N) ").strip()
