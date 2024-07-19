@@ -1,6 +1,7 @@
 ---
 
 # Battleship Game Cameron & Gianna
+![Screenshot 2024-07-19 093651](https://github.com/user-attachments/assets/fa823bd1-ce80-4864-9836-09d8b374ef57)
 
 
 Welcome to Battleship! This is a simple single-player implementation of the classic board game Battleship.
@@ -34,6 +35,8 @@ This project is a Python creation of the Battleship game. It allows the player t
 ## [Battleship 1.0](BattleShip_Stage1.py)
 Overview: Stage 1.0 focuses on creating the game board and basic functions of Battleship. A random number should be generated to represent the ship's location on the game board, and the user will be prompted to input a guess followed by the display of an updated grid. 
 ![Screenshot 2024-07-19 092723](https://github.com/user-attachments/assets/959a57fc-710f-43c0-98c0-72897c844d8a)
+![Screenshot 2024-07-19 093808](https://github.com/user-attachments/assets/41edf82d-428e-4186-8335-1c26e604e9ab)
+
 
 
 
@@ -41,12 +44,14 @@ Overview: Stage 1.0 focuses on creating the game board and basic functions of Ba
 ## [Battleship 1.1](BattleShip_Stage1.1.py)
 Overview: Now that the basics of Battleship have been created, this stage will challenge you to integrate some dynamic functions within the game. The user should define the size of the grid and have the ability to determine whether or not ships are placed randomly or manually.
 ![Screenshot 2024-07-19 092741](https://github.com/user-attachments/assets/cc38fbff-3342-450f-978f-1208155595c4)
+![Screenshot 2024-07-19 093825](https://github.com/user-attachments/assets/1573ccea-8e26-4474-b68c-dda63aff7c1e)
 
 
 
 
 ## [Battleship 2.0](Battleship_Stage2.py)
 Overview: This stage focuses on keeping track of two sets of data rather than one. Only a single ship will be utilized.
+![Screenshot 2024-07-19 093852](https://github.com/user-attachments/assets/dc65509b-63db-489e-8da6-d06b5fdca9f7)
 
 
 
@@ -55,6 +60,7 @@ Overview: This stage focuses on keeping track of two sets of data rather than on
 ## [Battleship 2.1](BattleShip_Stage2.1.py)
 Overview: This stage increases in intensity by requiring larger ships. Consequently, this also means that there is more data to be stored, and there will be two separate lists for storing data. 
 ![Screenshot 2024-07-19 092935](https://github.com/user-attachments/assets/e184d165-7abe-4c9c-ac4f-b2d1fc7cb31b)
+![Screenshot 2024-07-19 094010](https://github.com/user-attachments/assets/3dc05775-6f9f-4a46-b3a4-1d898b73dbea)
 
 
 
