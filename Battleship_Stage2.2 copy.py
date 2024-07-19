@@ -541,15 +541,15 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
 # Gianna
 # Function for computer to place ships
 
-def Turn_system(turn,playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list):
+def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list):
     # insert playerShips, computerShips, as arguments into all Turn_system functions if running test lines (starting at 549 and 591)
     
     if turn == 0:
 
         # prints list of ships and coords for testing
 
-        # for x, y in computerShips.items():
-        #     print(f"- {x}, {y}")
+        for x, y in playerShips.items():
+            print(f"- {x}, {y}")
 
 
         print("Computer objective:\nSink The Player's Ships")
@@ -596,8 +596,8 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, playerShip1_name, playe
 
         # prints list of ships and coords for testing
 
-        # for x, y in playerShips.items():
-        #     print(f"- {x}, {y}")
+        for x, y in computerShips.items():
+            print(f"- {x}, {y}")
 
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
@@ -635,6 +635,8 @@ def Turn_system(turn,playerDisplayGrid, playerCoordGrid, playerShip1_name, playe
             print(f"You sunk the computer's ship, {playerShip2_name}!")
         else:
             print("You missed!")
+
+        
             
             t=5
         while t > 0:
@@ -951,9 +953,9 @@ def main():
     # Alternates turns between the computer and the player
     while True:
         turn=0
-        Turn_system(turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list)  
+        Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list)  
         turn=1
-        Turn_system(turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list)  
+        Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list)  
         
         
         
