@@ -2,7 +2,7 @@ import random
 import os
 from colorama import init, Fore, Style
 import time
-from ship_animations import shipAnimation_hit_miss, win_animation
+from ship_animations import shipAnimation_hit_miss, win_animation, playerboard_turn
 
 # Initialize Colorama for colored output
 init()
@@ -104,7 +104,7 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         for x, y in playerShips.items():
             print(f"- {x}, {y}")
 
-
+        playerboard_turn(turn)
         print("Computer objective:\nSink The Player's Ships")
         Shoot_Guess(playerDisplayGrid, playerCoordGrid,row_list, col_list,turn)
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
@@ -151,10 +151,11 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
 
         for x, y in computerShips.items():
             print(f"- {x}, {y}")
-
+        playerboard_turn(turn)
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
         Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
         os.system('cls' if os.name == 'nt' else 'clear')
+        playerboard_turn(turn)
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
         if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
