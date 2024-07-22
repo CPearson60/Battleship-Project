@@ -332,10 +332,13 @@ def main():
             break
 
     playerShips.update({playerShip1_name: [f"First Coord: ({row1}, {col1})   Second Coord: ({row2}, {col2})"]})
-    
 
-
-    playerShip2_name = input("Name your second ship: ")
+    while True:
+        playerShip2_name = input("Name your second ship: ")
+        if playerShip2_name == playerShip1_name:
+            print("That's already the name of your first ship. Please name your second ship differently.")
+        else:
+            break
 
     # Input for player ship 2
     while True:
@@ -421,8 +424,20 @@ def main():
     orientation = ["v","h"]
     computerShips = {}
 
-    computerShip1_name = input("Name the computer's first ship: ")
-    computerShip2_name = input("Name the computer's second ship: ")
+    while True:
+        computerShip1_name = input("Name the computer's first ship: ")
+        if computerShip1_name == playerShip1_name or computerShip1_name == playerShip2_name:
+            print("That's already the name of one of your ships. Please name the computer's first ship differently.")
+        else:
+            break
+    while True:
+        computerShip2_name = input("Name the computer's second ship: ")
+        if computerShip1_name == playerShip1_name or computerShip1_name == playerShip2_name:
+            print("That's already the name of one of your ships. Please name the computer's second ship differently.")
+        elif computerShip2_name == computerShip1_name:
+            print("That's already the name of the computer's first ship. Please name its second ship differently.")
+        else:
+            break
 
 
     # random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col
