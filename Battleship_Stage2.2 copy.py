@@ -170,13 +170,17 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         # Check if player hits ship 1 or ship 2
         print("Player Move Log:")
         if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
+
             print(f"You hit the Computer's ship, {computerShip1_name}!")
         if computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+
             print(f"You hit the Computer's ship, {computerShip1_name}!")
         if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
+
             print(f"You hit the Computer's ship, {computerShip2_name}!")
         if computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
             print(f"You hit the Computer's ship, {computerShip2_name}!")
+
         if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
             print(f"You sunk the computer's ship, {playerShip1_name}!")
         if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
@@ -278,14 +282,14 @@ def main():
         # asks and defines orientation for 2x1 ship
         orientation = input(f"Choose your ship orientation for {playerShip1_name} (v for vertical, h for horizontal)").strip()
         while True:
-            if orientation.lower != "h" and orientation.lower != "v" :
+            if orientation.lower() != "h" and orientation.lower() != "v" :
                 os.system('cls' if os.name == 'nt' else 'clear')
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
             else:
                 break
         while True:
-            if orientation.lower == "v":
+            if orientation.lower()=="v":
                 if row1 < row_list-1:
                     row2 = row1 + 1
                     col2 = col1 
@@ -297,7 +301,7 @@ def main():
             else:
                 break
         while True:      
-            if orientation.lower == "h":
+            if orientation.lower()=="h":
                 if col1 < col_list-1:
                     row2=row1
                     col2=col1 + 1
@@ -357,14 +361,14 @@ def main():
         # asks and defines orientation for 2x1 ship
         orientation = input(f"Choose your ship orientation for {playerShip2_name} (v for vertical, h for horizontal)").strip()
         while True:
-            if orientation != "h" and orientation != "v" :
+            if orientation.lower() != "h" and orientation.lower() != "v" :
                 os.system('cls' if os.name == 'nt' else 'clear')
                 BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
             else:
                 break
         while True:
-            if orientation=="v":
+            if orientation.lower()=="v":
                 if row3 < row_list-1:
                     row4 = row3 + 1
                     col4 = col3 
@@ -376,7 +380,7 @@ def main():
             else:
                 break
         while True:      
-            if orientation=="h":
+            if orientation.lower()=="h":
                 if col3 < col_list-1:
                     row4 = row3
                     col4 = col3 + 1
