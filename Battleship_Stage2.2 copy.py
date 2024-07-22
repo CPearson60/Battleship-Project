@@ -324,53 +324,52 @@ def main(): # Everything Runs Off Main Function
                 elif len(ship2) >= 2 and ship2[0].upper() in [chr(65 + i) for i in range(row_list)] and ship2[1:].isdigit() and int(ship2[1:]) <= col_list:     
                     row3 = ord(ship2[0].upper()) - ord('A')
                     col3 = int(ship2[1:]) - 1
-                    if row3 != row1 and row3 != row2 and row3 != col1 and row3 != col2 and col3 != col1 and col3 != col2 and col3 != row1 and col3 != col2:
-                        
-                                                  
-                    break
+                    if row3 != row1 or row3 != col1 or  col3 != col1 or col3 != row1 and row3 != row2 or row3 != col2 or col3 != col2 or col3 != col2:
+                        playerDisplayGrid[row3][col3] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
+                        BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)  
+                        # asks and defines orientation for 2x1 ship
+                        orientation = input(f"Choose your ship orientation for {playerShip2_name} (v for vertical, h for horizontal)").strip()
+                        while True:
+                            if orientation.lower() != "h" and orientation.lower() != "v" :
+                                os.system('cls' if os.name == 'nt' else 'clear')
+                                BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
+                                orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
+                            else:
+                                break
+                        while True:
+                            if orientation.lower()=="v":
+                                if row3 < row_list-1:
+                                    row4 = row3 + 1
+                                    col4 = col3 
+                                    break
+                                else:
+                                    row4 = row3 - 1
+                                    col4 = col3
+                                    break
+                            else:
+                                break
+                        while True:      
+                            if orientation.lower()=="h":
+                                if col3 < col_list-1:
+                                    row4 = row3
+                                    col4 = col3 + 1
+                                    break
+                                else:
+                                    row4 = row3
+                                    col4 = col3 - 1
+                                    break
+                            else:
+                                break
+                                                                
+                        break
                 else:
                     print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             break
-
         
         # generates coords of the player ship 2x1
 
         playerDisplayGrid[row3][col3] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
-        
-        # asks and defines orientation for 2x1 ship
-        orientation = input(f"Choose your ship orientation for {playerShip2_name} (v for vertical, h for horizontal)").strip()
-        while True:
-            if orientation.lower() != "h" and orientation.lower() != "v" :
-                os.system('cls' if os.name == 'nt' else 'clear')
-                BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
-                orientation = input(f"Choose your ship orientation(v for vertical, h for horizontal)").strip()
-            else:
-                break
-        while True:
-            if orientation.lower()=="v":
-                if row3 < row_list-1:
-                    row4 = row3 + 1
-                    col4 = col3 
-                    break
-                else:
-                    row4 = row3 - 1
-                    col4 = col3
-                    break
-            else:
-                break
-        while True:      
-            if orientation.lower()=="h":
-                if col3 < col_list-1:
-                    row4 = row3
-                    col4 = col3 + 1
-                    break
-                else:
-                    row4 = row3
-                    col4 = col3 - 1
-                    break
-            else:
-                break
         
         playerDisplayGrid[row4][col4] = f"{Fore.LIGHTRED_EX}O{Fore.BLUE}"
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
