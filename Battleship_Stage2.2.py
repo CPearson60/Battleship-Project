@@ -410,7 +410,7 @@ def shipAnimation_hit_miss(hit):
         os.system('cls' if os.name == 'nt' else 'clear')
         
 
-####################################################(Animations)############################################################### 
+
 def win_animation(turn):
 
     if turn == 0:
@@ -451,18 +451,8 @@ def win_animation(turn):
         print(Fore.YELLOW+"                      /___________\ \n")
 
 
-
-####################################################(End Of Animations)############################################################### 
- 
-####################################################(Actual Code | Functions)###############################################################  
-#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 
- 
- 
-
-#////////////////////////////////////////////////(Grid Creation Funtions)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
 # Gianna
-#int_input() function accounts for edge cases and used to force quit game
-def int_input(prompt, selection):
+def int_input(prompt, selection): #int_input() function accounts for edge cases and used to force quit game
     x = input(prompt)
     while not x.isnumeric() or not int(x) in selection:
         # repeats prompt until satisfactory input
@@ -504,47 +494,43 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 print(playerDisplayGrid[i][j], end="   | ")  # Print grid content
             print()
             
-        
-
-#////////////////////////////////////////////////////////////////(Player Shoot and Computer Shoot Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
     
-def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn):
+def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn): # Logic For All Shooting 
+    
     while True:
-        if turn == 0:
+        if turn == 0: # Logic For Comptuter Choosing Point To Shoot
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
 
-        else:
+        if turn == 1: # Player Coord Input For Choosing Point To Shoot
             shot = input(f"Where do you want to shoot (A-{chr(65 + row_list - 1)},1-{col_list})? ").strip().replace(",", "")
             
-        # .lower is case insinstive 
-        if shot.lower() == "quit":
+        if shot.lower() == "quit": # In The Case PLayer Wants To "Quit" This Is The Logic
+            
             print("The game has been forced quit. Have a nice day!")
             quit()
-        #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int
-        elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list:
+        elif len(shot) >= 2 and shot[0].upper() in [chr(65 + i) for i in range(row_list)] and shot[1:].isdigit() and int(shot[1:]) <= col_list: # Logic For Checking If The Computer or Player Input Is Valid --- *         #ensures length of character is atleast 2 | checks if first character is valid and within range | ensures character is digit *valid column number coverts & into int*
             break
-        else:
+        
+        else: # In Case Where The Input Is Valid Player Is Instructed To Input Another Coordinate --- * Computer Logic Always Selects A Valid Coord *
             print(f"Invalid input. Please enter a valid coordinate (A-{chr(65 + row_list - 1)},1-{col_list}).")
             print (shot)
 
-    # generate shot coordinates
-    #example: ord('B') - ord('A') gives 66 - 65 = 1
-    row = ord(shot[0].upper()) - ord('A')
-    #shot[1] = int value | number value
-    col = int(shot[1:]) - 1
+
+    row = ord(shot[0].upper()) - ord('A') # Converts Letter Given Into An ACSII Value, Which Is Then Subrtacted By The ACSII Value Of A(65) To Generate An Index Value
+    
+    col = int(shot[1:]) - 1 # Subtracts Number Given by One To Generate The Correct Index Value
 
     X = "x"
-    computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
+    computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}" # Places An "x" wherever player shoots
     computerCoordGrid[row][col] = X
     return (computerDisplayGrid, computerCoordGrid, X)
-#//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
+
 # Gianna
 # Function for computer to place ships
 
 def Turn_system(turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random_num1, random_num2, row_list, col_list):
-    # insert playerShips, computerShips, as arguments into all Turn_system functions if running test lines (starting at 549 and 591)
     
-    if turn == 0:
+    if turn == 0: # Computer Turn
 
         # prints list of ships and coords for testing
 
@@ -586,7 +572,7 @@ def Turn_system(turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, play
 
         os.system('cls' if os.name == 'nt' else 'clear')
     
-    else:
+    if turn == 1: # Player Turn
 
         # prints list of ships and coords for testing
 
@@ -613,9 +599,7 @@ def Turn_system(turn, playerDisplayGrid, playerCoordGrid, playerShip1_name, play
             
             os.system('cls' if os.name == 'nt' else 'clear')
 
-
-
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system('cls' if os.name == 'nt' else 'clear') # Clears terminal after each turn is complete
 
 
 
