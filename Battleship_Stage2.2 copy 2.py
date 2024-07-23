@@ -247,15 +247,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                 computerDisplayGrid[attachedShip2Row][attachedShip2Col] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
 
             if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
-                computerDisplayGrid[random1_StartRowCoord][random1_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
-                if k < 1:
-                    if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
-                        print(f"You sunk the computer's ship, {computerShip1_name}!")
-                        sunk_counter[10] += 1
-                        break
                 
                 if a < 1:
                     print(f"You hit the Computer's ship, {computerShip1_name}!")
+                    if k < 1:
+                        if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+                            print(f"You sunk the computer's ship, {computerShip1_name}!")
+                            k += 1
+                            break
                     sunk_counter[0] += 1
                     break
                 else:
@@ -265,14 +264,13 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
 
             elif computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
 
-                if k < 1:
-                    if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
-                        print(f"You sunk the computer's ship, {computerShip1_name}!")
-                        sunk_counter[10] += 1
-                        break
-
                 if b < 1:
                     print(f"You hit the Computer's ship, {computerShip1_name}!")
+                    if k < 1:
+                        if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+                            print(f"You sunk the computer's ship, {computerShip1_name}!")
+                            k += 1
+                            break
                     sunk_counter[1] += 1
                     break
                 else:
@@ -281,14 +279,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                 
                 
             elif computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
-                if l < 1:
-                    if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
-                        print(f"You sunk the computer's ship, {computerShip2_name}!")
-                        sunk_counter[11] += 1
-                        break
 
                 if c < 1:
                     print(f"You hit the Computer's ship, {computerShip2_name}!")
+                    if l < 1:
+                        if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+                            print(f"You sunk the computer's ship, {computerShip2_name}!")
+                            l += 1
+                            break
                     sunk_counter[2] += 1
                     break
                 else:
@@ -296,15 +294,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     break
 
             elif computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
-                if l < 1:
-                    if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
-                        print(f"You sunk the computer's ship, {computerShip2_name}!")
-                        sunk_counter[11] += 1
-                        break
 
                 if d < 1:
                     print(f"You hit the Computer's ship, {computerShip2_name}!")
-                    
+                    if l < 1:
+                        if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+                            print(f"You sunk the computer's ship, {computerShip2_name}!")
+                            l += 1
+                            break
                     sunk_counter[3] += 1
                     break
                 else:
