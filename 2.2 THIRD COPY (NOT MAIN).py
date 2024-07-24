@@ -7,8 +7,6 @@ from ship_animations import shipanimation
 # Initialize Colorama for colored output
 init()
 
-#Ginna
-
 def int_input(prompt, selection):#This function accounts for edge cases and used to force quit game
     x = input(prompt)
     while not x.isnumeric() or not int(x) in selection:# repeats prompt until satisfactory input
@@ -20,7 +18,6 @@ def int_input(prompt, selection):#This function accounts for edge cases and used
             x = input(prompt)
     return int(x)
 
-# Cameron
 def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list): # This fuction is used to create a visual board *List of List
     print("", Fore.BLUE + "|", " ", end="")# Print nums for columns header
     for col in range(col_list): 
@@ -79,8 +76,7 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
         computerDisplayGrid[row][col] = f"{Fore.LIGHTGREEN_EX}{X}{Fore.BLUE}"
         computerCoordGrid[row][col] = X
         return (computerDisplayGrid, computerCoordGrid, X)
-#//////////////////////////////////////////////////////////////////(User Turn and Computer Turn Function)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#
-# Gianna
+
 def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter): # Function for computer to place ships
     
     if turn == 0: # Computer Turn
@@ -121,6 +117,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                 playerDisplayGrid[row4][col4] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
 
             if playerCoordGrid[row1][col1] == "x":
+                if i < 1:
+                    if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == "x":
+                        print(f"The computer sunk your ship, {playerShip1_name}!")
+                        sunk_counter[8] += 1
+                        break
+                    else:
+                        break
+
                 if e < 1:
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
@@ -140,6 +144,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                 
 
             elif playerCoordGrid[row2][col2] == "x":
+                if i < 1:
+                    if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == "x":
+                        print(f"The computer sunk your ship, {playerShip1_name}!")
+                        sunk_counter[8] += 1
+                        break
+                    else:
+                        break
+
                 if f < 1:
 
                     print(f"The computer hit your ship, {playerShip1_name}!")
@@ -249,12 +261,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
             if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
                 computerDisplayGrid[random1_StartRowCoord][random1_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
                 if k < 1:
+                    shipanimation(1)
                     if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
                         print(f"You sunk the computer's ship, {computerShip1_name}!")
                         sunk_counter[10] += 1
                         break
                 
                 if a < 1:
+                    shipanimation(1)
                     print(f"You hit the Computer's ship, {computerShip1_name}!")
                     sunk_counter[0] += 1
                     break
@@ -266,12 +280,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
             elif computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
 
                 if k < 1:
+                    shipanimation(1)
                     if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
                         print(f"You sunk the computer's ship, {computerShip1_name}!")
                         sunk_counter[10] += 1
                         break
 
                 if b < 1:
+                    shipanimation(1)
                     print(f"You hit the Computer's ship, {computerShip1_name}!")
                     sunk_counter[1] += 1
                     break
@@ -282,12 +298,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                 
             elif computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
                 if l < 1:
+                    shipanimation(1)
                     if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
                         print(f"You sunk the computer's ship, {computerShip2_name}!")
                         sunk_counter[11] += 1
                         break
 
                 if c < 1:
+                    shipanimation(1)
                     print(f"You hit the Computer's ship, {computerShip2_name}!")
                     sunk_counter[2] += 1
                     break
@@ -297,12 +315,14 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
 
             elif computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
                 if l < 1:
+                    shipanimation(1)
                     if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
                         print(f"You sunk the computer's ship, {computerShip2_name}!")
                         sunk_counter[11] += 1
                         break
 
                 if d < 1:
+                    shipanimation(1)
                     print(f"You hit the Computer's ship, {computerShip2_name}!")
                     
                     sunk_counter[3] += 1
@@ -325,7 +345,6 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         os.system('cls' if os.name == 'nt' else 'clear')
 
     os.system('cls' if os.name == 'nt' else 'clear')
-
 
 def main(): # Everything Runs Off Main Function
 
@@ -682,8 +701,4 @@ def main(): # Everything Runs Off Main Function
         #Player Turn
         Turn_system(1, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter)  
         
-        
-        
-#///////////////////////////////////////////////////////////////////////////(Calling The Game() Funtion)\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\#        
-     
 main()
