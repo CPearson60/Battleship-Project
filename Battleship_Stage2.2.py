@@ -44,7 +44,7 @@ def BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
                 print(playerDisplayGrid[i][j], end="   | ")  # Print grid content
             print()
     
-def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn): # This Fuction Control The Shooting Logic
+def Shoot_Guess(computerDisplayGrid, computerDisplayGridGrid, col_list, row_list,turn): # This Fuction Control The Shooting Logic
     while True:
         if turn == 0: # Logic For Comptuter Choosing Point To Shoot
             shot = (f" {chr(random.randint(65, 65 + row_list - 1) )}{random.randint(1,col_list)}").strip().replace(",", "")
@@ -69,15 +69,15 @@ def Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn)
     if turn == 0:
         X = "x"
         computerDisplayGrid[row][col] = f"{Fore.LIGHTYELLOW_EX}{X}{Fore.BLUE}"
-        computerCoordGrid[row][col] = X
-        return (computerDisplayGrid, computerCoordGrid, X)
+        computerDisplayGridGrid[row][col] = X
+        return (computerDisplayGrid, computerDisplayGridGrid, X)
     else:
         X = "x"
         computerDisplayGrid[row][col] = f"{Fore.LIGHTGREEN_EX}{X}{Fore.BLUE}"
-        computerCoordGrid[row][col] = X
-        return (computerDisplayGrid, computerCoordGrid, X)
+        computerDisplayGridGrid[row][col] = X
+        return (computerDisplayGrid, computerDisplayGridGrid, X)
 
-def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter): # Function for computer to place ships
+def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerDisplayGridGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerDisplayGridGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter): # Function for computer to place ships
     
     if turn == 0: # Computer Turn
 
@@ -85,10 +85,10 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
             print(f"- {x}, {y}")
 
         shipanimation(3) #computer turn text
-        Shoot_Guess(playerDisplayGrid, playerCoordGrid,row_list, col_list,turn) # Computer Shoot Guess
+        Shoot_Guess(playerDisplayGrid, playerDisplayGridGrid,row_list, col_list,turn) # Computer Shoot Guess
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list) # Displays Player Grid 
 
-        if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x": # Win Check
+        if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x": # Win Check
             print("The computer sunk both your ships! Better luck next time.")
             shipanimation(4) #computer win animation
             t=10
@@ -109,16 +109,16 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         j = sunk_counter[9]
 
         while True:
-            if playerCoordGrid[row2][col2] == "x":
+            if playerDisplayGridGrid[row2][col2] == "x":
                 playerDisplayGrid[row2][col2] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
-            if playerCoordGrid[row3][col3] == "x":
+            if playerDisplayGridGrid[row3][col3] == "x":
                 playerDisplayGrid[row3][col3] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
-            if playerCoordGrid[row4][col4] == "x":
+            if playerDisplayGridGrid[row4][col4] == "x":
                 playerDisplayGrid[row4][col4] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
 
-            if playerCoordGrid[row1][col1] == "x":
+            if playerDisplayGridGrid[row1][col1] == "x":
                 if i < 1:
-                    if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == "x":
+                    if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == "x":
                         print(f"The computer sunk your ship, {playerShip1_name}!")
                         sunk_counter[8] += 1
                         break
@@ -133,9 +133,9 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     break
                 
 
-            elif playerCoordGrid[row2][col2] == "x":
+            elif playerDisplayGridGrid[row2][col2] == "x":
                 if i < 1:
-                    if playerCoordGrid[row1][col1] == playerCoordGrid[row2][col2] == "x":
+                    if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == "x":
                         print(f"The computer sunk your ship, {playerShip1_name}!")
                         sunk_counter[8] += 1
                         break
@@ -149,9 +149,9 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     print("The computer missed!")
                     break
                 
-            elif playerCoordGrid[row3][col3] == "x":
+            elif playerDisplayGridGrid[row3][col3] == "x":
                 if j < 1:
-                    if playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
+                    if playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x":
                         print(f"The computer sunk your ship, {playerShip2_name}!")
                         sunk_counter[9] += 1
                         break
@@ -163,9 +163,9 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     print("The computer missed!")
                     break
 
-            elif playerCoordGrid[row4][col4] == "x":
+            elif playerDisplayGridGrid[row4][col4] == "x":
                 if j < 1:
-                    if playerCoordGrid[row3][col3] == playerCoordGrid[row4][col4] == "x":
+                    if playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x":
                         print(f"The computer sunk your ship, {playerShip2_name}!")
                         sunk_counter[9] += 1
                         break
@@ -199,12 +199,12 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         # Player Turn Text
         shipanimation(2)
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list) # Prints Computer Board
-        Shoot_Guess(computerDisplayGrid, computerCoordGrid, col_list, row_list,turn) # Player Shoot Logic
+        Shoot_Guess(computerDisplayGrid, computerDisplayGridGrid, col_list, row_list,turn) # Player Shoot Logic
         os.system('cls' if os.name == 'nt' else 'clear')
         shipanimation(2) # Player Turn Text
         BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
 
-        if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+        if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
             print("You sunk both of the computer's ships! You WIN!")
             shipanimation(5)
             t=10
@@ -224,18 +224,18 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
         l = sunk_counter[11]
 
         while True:
-            if computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+            if computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
                 computerDisplayGrid[attachedShip1Row][attachedShip1Col] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
-            if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
+            if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
                 computerDisplayGrid[random2_StartRowCoord][random2_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
-            if computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+            if computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
                 computerDisplayGrid[attachedShip2Row][attachedShip2Col] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
 
-            if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
+            if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
                 computerDisplayGrid[random1_StartRowCoord][random1_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
                 if k < 1:
                     
-                    if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+                    if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
                         shipanimation(1)
                         print(f"You sunk the computer's ship, {computerShip1_name}!")
                         sunk_counter[10] += 1
@@ -251,11 +251,11 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     break
                 
 
-            elif computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+            elif computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
 
                 if k < 1:
                     
-                    if computerCoordGrid[random1_StartRowCoord][random1_StartColCoord] == computerCoordGrid[attachedShip1Row][attachedShip1Col] == "x":
+                    if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
                         shipanimation(1)
                         print(f"You sunk the computer's ship, {computerShip1_name}!")
                         sunk_counter[10] += 1
@@ -271,10 +271,10 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     break
                 
                 
-            elif computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
+            elif computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
                 if l < 1:
                     
-                    if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+                    if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
                         shipanimation(1)
                         print(f"You sunk the computer's ship, {computerShip2_name}!")
                         sunk_counter[11] += 1
@@ -289,10 +289,10 @@ def Turn_system(turn, playerShips, computerShips, playerDisplayGrid, playerCoord
                     print("You missed!")
                     break
 
-            elif computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+            elif computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
                 if l < 1:
                     
-                    if computerCoordGrid[random2_StartRowCoord][random2_StartColCoord] == computerCoordGrid[attachedShip2Row][attachedShip2Col] == "x":
+                    if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
                         shipanimation(1)
                         print(f"You sunk the computer's ship, {computerShip2_name}!")
                         sunk_counter[11] += 1
@@ -363,10 +363,10 @@ def main(): # Everything Runs Off Main Function
     # Gianna
     # Initialize grids
     computerDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-    computerCoordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+    computerDisplayGridGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
     playerDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-    playerCoordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+    playerDisplayGridGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
     # Display initial ship placement grid
     BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
@@ -441,7 +441,7 @@ def main(): # Everything Runs Off Main Function
                     print(f"Invalid input. Please enter Y or N: ")
                 else:
                     playerDisplayGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
-                    playerCoordGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
+                    playerDisplayGridGrid = [[" " for _ in range(col_list)] for _ in range(row_list)]
 
                     break
 
@@ -562,8 +562,8 @@ def main(): # Everything Runs Off Main Function
                 else:
                     playerDisplayGrid[row3][col3] = " "
                     playerDisplayGrid[row4][col4] = " "
-                    playerCoordGrid[row3][col3] = " "
-                    playerCoordGrid[row4][col4] = " "
+                    playerDisplayGridGrid[row3][col3] = " "
+                    playerDisplayGridGrid[row4][col4] = " "
 
                     break
 
@@ -672,10 +672,286 @@ def main(): # Everything Runs Off Main Function
 
     # Alternates turns between the computer and the player
     sunk_counter = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # Turn Logic
+    
     while True:
-        #Comp Turn
-        Turn_system(0, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter)  
-        #Player Turn
-        Turn_system(1, playerShips, computerShips, playerDisplayGrid, playerCoordGrid, playerShip1_name, playerShip2_name, computerShip1_name, computerShip2_name, computerDisplayGrid, computerCoordGrid, row1, col1, row2, col2, row3, col3, row4, col4, random1_StartRowCoord, random1_StartColCoord, random2_StartRowCoord, random2_StartColCoord, attachedShip1Row, attachedShip1Col, attachedShip2Row, attachedShip2Col, row_list, col_list, sunk_counter)  
+       
+        turn =0  
+
+        if turn == 0: # Computer Turn
+
+            for x, y in playerShips.items(): # prints list of ships and coords for testing
+                print(f"- {x}, {y}")
+
+            shipanimation(3) #computer turn text
+            playerDisplayGrid,playerDisplayGridGrid,turn = Shoot_Guess(playerDisplayGrid, playerDisplayGridGrid,row_list, col_list,turn) # Computer Shoot Guess
+            BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list) # Displays Player Grid 
+
+            if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x": # Win Check
+                print("The computer sunk both your ships! Better luck next time.")
+                shipanimation(4) #computer win animation
+                t=10
+                while t > 0: # Timer Until Goes Back To Menu * Main()*
+                    print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                    time.sleep(1)  # wait for 1 second
+                    t -= 1
+                main()
         
+        
+            # Check if player hits ship 1 or ship 2
+            print("Player Move Log:")
+            e = sunk_counter[4]
+            f = sunk_counter[5]
+            g = sunk_counter[6]
+            h = sunk_counter[7]
+            i = sunk_counter[8]
+            j = sunk_counter[9]
+
+            while True:
+                if playerDisplayGridGrid[row2][col2] == "x":
+                    playerDisplayGrid[row2][col2] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+                if playerDisplayGridGrid[row3][col3] == "x":
+                    playerDisplayGrid[row3][col3] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+                if playerDisplayGridGrid[row4][col4] == "x":
+                    playerDisplayGrid[row4][col4] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+
+                if playerDisplayGridGrid[row1][col1] == "x":
+                    if i < 1:
+                        if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == "x":
+                            print(f"The computer sunk your ship, {playerShip1_name}!")
+                            sunk_counter[8] += 1
+                            break
+
+                    if e < 1:
+
+                        print(f"The computer hit your ship, {playerShip1_name}!")
+                        sunk_counter[4] += 1
+                        break
+                    else:
+                        print("The computer missed!")
+                        break
+                    
+
+                elif playerDisplayGridGrid[row2][col2] == "x":
+                    if i < 1:
+                        if playerDisplayGridGrid[row1][col1] == playerDisplayGridGrid[row2][col2] == "x":
+                            print(f"The computer sunk your ship, {playerShip1_name}!")
+                            sunk_counter[8] += 1
+                            break
+
+                    if f < 1:
+
+                        print(f"The computer hit your ship, {playerShip1_name}!")
+                        sunk_counter[5] += 1
+                        break
+                    else:
+                        print("The computer missed!")
+                        break
+                    
+                elif playerDisplayGridGrid[row3][col3] == "x":
+                    if j < 1:
+                        if playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x":
+                            print(f"The computer sunk your ship, {playerShip2_name}!")
+                            sunk_counter[9] += 1
+                            break
+
+                    if g < 1:
+                        sunk_counter[6] += 1
+                        break
+                    else:
+                        print("The computer missed!")
+                        break
+
+                elif playerDisplayGridGrid[row4][col4] == "x":
+                    if j < 1:
+                        if playerDisplayGridGrid[row3][col3] == playerDisplayGridGrid[row4][col4] == "x":
+                            print(f"The computer sunk your ship, {playerShip2_name}!")
+                            sunk_counter[9] += 1
+                            break
+
+                    if h < 1:
+                        print(f"The computer hit your ship, {playerShip2_name}!")
+                        sunk_counter[7] += 1
+                        break
+                    else:
+                        print("The computer missed!")
+                        break
+                else:
+                    print("The computer missed!")
+                    break
+
+
+            t=5
+            while t > 0:
+                print(f"{Fore.WHITE}Player moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                time.sleep(1)  # wait for 1 second
+                t -= 1
+
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+        
+        turn=1
+        if turn == 1: # Player Turn
+
+            for x, y in computerShips.items(): # prints list of ships and coords for testing
+                print(f"- {x}, {y}")
+            # Player Turn Text
+            shipanimation(2)
+            BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list) # Prints Computer Board
+            Shoot_Guess(computerDisplayGrid, computerDisplayGridGrid, col_list, row_list,turn) # Player Shoot Logic
+            os.system('cls' if os.name == 'nt' else 'clear')
+            shipanimation(2) # Player Turn Text
+            BattleGrid(turn, computerDisplayGrid, playerDisplayGrid, row_list, col_list)
+
+            if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
+                print("You sunk both of the computer's ships! You WIN!")
+                shipanimation(5)
+                t=10
+                while t > 0:
+                    print(f"{Fore.WHITE}Back to menu in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                    time.sleep(1)  # wait for 1 second
+                    t -= 1
+                main()
+
+            # Check if player hits ship 1 or ship 2
+            print("Player Move Log:")
+            a = sunk_counter[0]
+            b = sunk_counter[1]
+            c = sunk_counter[2]
+            d = sunk_counter[3]
+            k = sunk_counter[10]
+            l = sunk_counter[11]
+
+            while True:
+                if computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
+                    computerDisplayGrid[attachedShip1Row][attachedShip1Col] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+                if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
+                    computerDisplayGrid[random2_StartRowCoord][random2_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+                if computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
+                    computerDisplayGrid[attachedShip2Row][attachedShip2Col] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+
+                if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == "x":
+                    computerDisplayGrid[random1_StartRowCoord][random1_StartColCoord] = Fore.LIGHTBLACK_EX + "x" + Fore.BLUE
+                    if k < 1:
+                        
+                        if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
+                            shipanimation(1)
+                            print(f"You sunk the computer's ship, {computerShip1_name}!")
+                            sunk_counter[10] += 1
+                            break
+                    
+                    if a < 1:
+                        shipanimation(1)
+                        print(f"You hit the Computer's ship, {computerShip1_name}!")
+                        sunk_counter[0] += 1
+                        break
+                    else:
+                        print("You missed!")
+                        break
+                    
+
+                elif computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
+
+                    if k < 1:
+                        
+                        if computerDisplayGridGrid[random1_StartRowCoord][random1_StartColCoord] == computerDisplayGridGrid[attachedShip1Row][attachedShip1Col] == "x":
+                            shipanimation(1)
+                            print(f"You sunk the computer's ship, {computerShip1_name}!")
+                            sunk_counter[10] += 1
+                            break
+
+                    if b < 1:
+                        shipanimation(1)
+                        print(f"You hit the Computer's ship, {computerShip1_name}!")
+                        sunk_counter[1] += 1
+                        break
+                    else:
+                        print("You missed!")
+                        break
+                    
+                    
+                elif computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == "x":
+                    if l < 1:
+                        
+                        if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
+                            shipanimation(1)
+                            print(f"You sunk the computer's ship, {computerShip2_name}!")
+                            sunk_counter[11] += 1
+                            break
+
+                    if c < 1:
+                        shipanimation(1)
+                        print(f"You hit the Computer's ship, {computerShip2_name}!")
+                        sunk_counter[2] += 1
+                        break
+                    else:
+                        print("You missed!")
+                        break
+
+                elif computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
+                    if l < 1:
+                        
+                        if computerDisplayGridGrid[random2_StartRowCoord][random2_StartColCoord] == computerDisplayGridGrid[attachedShip2Row][attachedShip2Col] == "x":
+                            shipanimation(1)
+                            print(f"You sunk the computer's ship, {computerShip2_name}!")
+                            sunk_counter[11] += 1
+                            break
+
+                    if d < 1:
+                        shipanimation(1)
+                        print(f"You hit the Computer's ship, {computerShip2_name}!")
+                        
+                        sunk_counter[3] += 1
+                        break
+                    else:
+                        print("You missed!")
+                        break
+                else:
+                    print("You missed!")
+                    break
+                    
+            
+                
+            t=5
+            while t > 0:
+                print(f"{Fore.WHITE}Computer moves in {t % 60:02}", end=" seconds.\r")  # display minutes and seconds
+                time.sleep(1)  # wait for 1 second
+                t -= 1
+
+            os.system('cls' if os.name == 'nt' else 'clear')
+
+        os.system('cls' if os.name == 'nt' else 'clear')
+
 main()
